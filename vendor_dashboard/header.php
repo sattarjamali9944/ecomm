@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href=" dashbord.php"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href=" dashboard.php"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -25,9 +25,15 @@
 							<img src="assets/img/user.png" class="img-circle" alt="Avatar">
 							<span><?php
 							
-							echo $_SESSION["admin_email"];?></span> 
+							echo $_SESSION["vendor_name"];?></span> 
 							<i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
+							    <li><a href="update_profile.php"><i class="lnr lnr-cog"></i> 
+								<span>Profile Setting</span></a>
+								</li>
+								 <li><a href="change_pass.php"><i class="lnr lnr-cog"></i> 
+								<span>Change Password</span></a>
+								</li>
 								<li><a href="logout.php"><i class="lnr lnr-exit"></i> 
 								<span>Logout</span></a></li>
 							</ul>
@@ -43,22 +49,10 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-					<li><a href=" dashbord.php" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+					<li><a href="dashboard.php" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						
 					
-					<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed">
-							<i class="lnr lnr-file-empty"></i> <span>Categories Settings</span> 
-							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="add_main_category.php" class="">Main Categories</a></li>
-									<li><a href="add_sub_category.php" class="">Sub Categories</a></li>
-									<li><a href="add_third_category.php" class="">
-									Third Child Categories</a></li>
-								</ul>
-							</div>
-						</li>
+					
 					<li>
 							<a href="#subPages2" data-toggle="collapse" class="collapsed">
 							<i class="lnr lnr-file-empty"></i> <span>Products</span> 
@@ -71,13 +65,25 @@
 								</ul>
 							</div>
 						</li>
+					<li>
+							<a href="#subPages3" data-toggle="collapse" class="collapsed">
+							<i class="fa fa-shopping-bag"></i> <span>Orders</span> 
+							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages3" class="collapse ">
+								<ul class="nav">
+								    <li><a href="orders.php" class="">Orders </a></li>
+									
+									<li><a href="pending_order.php" class="">Pending Order </a></li>
+									<li><a href="confirmed_order.php" class="">Confirmed Order</a></li>
+									<li><a href="delivered_order.php" class="">Delivered Order</a></li>
+									
+									
+								</ul>
+							</div>
+						</li>
 					
-						<li><a href="users.php" class=""><i class="lnr lnr-user"></i> 
-						<span>Users</span></a></li>
-						<li><a href="products.php" class="">
-						<i class="lnr lnr-chart"></i> <span>Products</span></a></li>
-						<li><a href="orders.php" class=""><i class="lnr lnr-cog"></i> 
-						<span>Orders</span></a></li>
+						<li><a href="shipping_policy.php" class=""><i class="fa fa-plane"></i> 
+						<span>Shipping Charges</span></a></li>
 						
 						</ul>
 				</nav>

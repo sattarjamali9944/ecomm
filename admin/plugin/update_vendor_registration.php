@@ -13,25 +13,27 @@ $company_address=mysqli_real_escape_string($conn,$_POST["company_address"]);
 $personal_address=mysqli_real_escape_string($conn,$_POST["personal_address"]);
 $phone=mysqli_real_escape_string($conn,$_POST["phone"]);
 $email=mysqli_real_escape_string($conn,$_POST["email"]);
-$insert_query_vendor=mysqli_query($conn,"INSERT INTO `vendor` 
-(`vendor_id`, `vendor_first_name`, `vendor_last_name`, 
-`vendor_ntn_number`,`vendor_company_name`,`vendor_cnic`,
- `vendor_address`, `vendor_personal_address`, `vendor_email`,
- `vendor_phone`,`vendor_status`, `uploadind_date`)
- VALUES (NULL, '".$first_name."', '".$last_name."',
- '".$ntn."','".$company_name."', '".$cnic."', 
- '".$company_address."', '".$personal_address."','".$email."',
- '".$phone."','', '".$date."')")or die(mysqli_error($conn));
-if($insert_query_vendor > 0){
+$update_query_vendor=mysqli_query($conn,"update `vendor`
+ 
+set 
+vendor_first_name='".$first_name."', 
+vendor_last_name= '".$last_name."', 
+vendor_ntn_number='".$ntn."',
+vendor_company_name='".$company_name."',
+vendor_cnic= '".$cnic."',
+vendor_address='".$company_address."',
+vendor_personal_address='".$personal_address."',
+vendor_email='".$email."',
+vendor_phone='".$phone."'
+
+where vendor_id='".$_SESSION['vendor_id']."'
+")or die(mysqli_error($conn));
+if($update_query_vendor > 0){
 	
 	$vendor=mysqli_query($conn,"select * from vendor where vendor_email='".$email."'")or 
 	die(mysqli_error($conn));//this query is creating for session id 
 	if($fetch=mysqli_fetch_array($vendor)){
-	  $_SESSION["vendor_id"]=$fetch["vendor_id"];//vendor session id 
-	  $_SESSION["vendor_name"]=$fetch["vendor_first_name"];//vendor first name 
-	  $token=mt_rand(0,123456789); 
-	 $_SESSION["token"]=$token;//generated token for security
-	 
+	  
 	 
 	 $uploadsDir = "../../vendor_images/";
         $allowedFileType = array('jpg','png','jpeg');
@@ -82,15 +84,13 @@ if($insert_query_vendor > 0){
 	 
 	 
 	 
-	 
-	 ?>
-	 <script>
-	 window.location.href='../../vendor_dashboard/set_password.php';
+	  }
+?>
+ <script>
+	 window.location.href='../../vendor_dashboard/profile.php';
 	 
 	 </script>
-	 
-	
-	<?php }	
+<?php	  
 }
 }
 }

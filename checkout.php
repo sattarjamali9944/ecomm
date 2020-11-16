@@ -468,7 +468,7 @@ if($count_currencies > 0){//if count  greater than 0
 							}
 									
 									?>
-									<button type="submit" name="vendor-btn"
+									<button type="submit" name="billing-btn"
 									class="btn btn-outline-primary-2 btn-order btn-block">
 									PROCEED TO CHECKOUT</button>
 	                			</div><!-- End .summary -->

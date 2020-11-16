@@ -1,7 +1,8 @@
 <?php
 session_start();
+error_reporting(0);
 require("../include/conn.php");
-if(isset($_SESSION["admin_id"])){
+if(isset($_SESSION["vendor_id"])){
 
 ?>
 
@@ -72,7 +73,7 @@ if(isset($_GET["msg"])){?>
 <?php
 
 
-$query=mysqli_query($conn,"select * from products") or die(mysqli_error($conn));
+$query=mysqli_query($conn,"select * from products where vendor_id='".$_SESSION['vendor_id']."'") or die(mysqli_error($conn));
 								
 								$count=mysqli_num_rows($query);
 								if($count > 0){	?>
@@ -132,7 +133,7 @@ while($fetch_images=mysqli_fetch_array($get_images)){
 	$product_image=$fetch_images["image_name"];
 ?>
 
-<img src="plugin/product_images/<?php echo $product_image;?>" 
+<img src="../admin/plugin/product_images/<?php echo $product_image;?>" 
 style="height:50px; width:50px;">
 
 <?php
@@ -154,6 +155,11 @@ style="height:50px; width:50px;">
 				</table>				
 								<?php
 								}
+				else{
+					
+					echo "<h2 style='color:red'> No Record Found</h2>";
+					
+				}				
 
 ?>
 								</div>

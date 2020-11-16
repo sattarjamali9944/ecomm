@@ -1,8 +1,7 @@
 <?php
+require("../include/conn.php");
 session_start();
-error_reporting(0);
-
-
+if(isset( $_SESSION["vendor_id"]) && isset( $_SESSION["vendor_id"])){
 ?>
 <!doctype html>
 <html lang="en">
@@ -51,8 +50,14 @@ error_reporting(0);
 									<div class="metric">
 										<span class="icon"><i class="fa fa-download"></i></span>
 										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
+											<span class="number">Products</span>
+											<span class="title">
+									<a href="products.php">		<?php
+											$query=mysqli_query($conn,"select * from products where vendor_id='".$_SESSION['vendor_id']."'") or die(mysqli_error($conn));
+								
+								echo $count=mysqli_num_rows($query);
+										?>	</a>
+											</span>
 										</p>
 									</div>
 								</div>
@@ -60,17 +65,26 @@ error_reporting(0);
 									<div class="metric">
 										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
 										<p>
-											<span class="number">203</span>
-											<span class="title">Sales</span>
+											<span class="number">
+		<?php $order_query=mysqli_query($conn,"select * from products inner join orders on products.pro_id=orders.product_id 
+where products.vendor_id='".$_SESSION["vendor_id"]."'") or
+								die(mysqli_error($conn));
+								
+								echo $count=mysqli_num_rows($order_query);
+								?>
+								
+								</span>
+											<span class="title"><a href="orders.php">
+											Orders</a></span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-eye"></i></span>
+										<span class="icon"><i class="fa fa-lock"></i></span>
 										<p>
 											<span class="number">274,678</span>
-											<span class="title">Visits</span>
+											<span class="title"><a href="change_pass.php">Change Password</a></span>
 										</p>
 									</div>
 								</div>
@@ -531,3 +545,12 @@ error_reporting(0);
 </body>
 
 </html>
+<?php
+}
+else{
+?>
+<script>
+window.location.href="index.php";
+</script>
+<?php 
+}?>

@@ -1,7 +1,7 @@
 <?php
 require("../include/conn.php");
 session_start();
-
+if(isset($_SESSION["vendor_id"]) && isset($_SESSION["token"])){
 ?>
 
 
@@ -9,7 +9,7 @@ session_start();
 <html lang="en" class="fullscreen-bg">
 
 <head>
-	<title>Login hs code </title>
+	<title>Change  Password  hs code </title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -38,84 +38,84 @@ session_start();
 						<div class="content">
 							<div class="header">
 								<div class="logo text-center">
-								<a href="../index.php"><img src="assets/img/logo-dark.png" 
-								alt="Klorofil Logo"></a></div>
-								<p class="lead">Login to your account</p>
+								<a href="dashboard.php">
+								<img src="assets/img/logo-dark.png" alt="Klorofil Logo">
+								</a>
+								
+								</div>
+								<p class="lead">Change  Password </p>
 							</div>
 							
 							
 							<?php
 							
-		if(isset($_POST["login_btn"])){					
-
-$email=$_POST['email'];
-$pass=$_POST['password'];
-
-
-
-$get_session_id=mysqli_query($conn,"select * from vendor where vendor_email='".$email."'
-
-and vendor_password='".$pass."'
-") or
-	die(mysqli_error($conn));
-	$number_of_row=mysqli_num_rows($get_session_id);
-	if($number_of_row > 0){
-		if($fetch=mysqli_fetch_array($get_session_id)){
+		if(isset($_POST["set_password_btn"])){					
+        $token=$_POST["token"];//token 
+		
+		if($_SESSION["token"]==$token){
 			
-			$_SESSION["vendor_id"]=$fetch["vendor_id"];//vendor session id 
-	  $_SESSION["vendor_name"]=$fetch["vendor_first_name"];//vendor first name 
-	  $token=mt_rand(0,123456789); 
-	 $_SESSION["token"]=$token;//generated token for security
-	 
+			 $enter_pass=$_POST["password"];//enter pass
+             $c_password=$_POST["c_password"];
+        if($enter_pass==$c_password){
 			
-			?>
+		$update=mysqli_query($conn,"update vendor set 
+		vendor_password='".$enter_pass."' where vendor_id='".$_SESSION['vendor_id']."'")or
+		die(mysqli_error($conn));//set password here
+		
+        ?> 		
+		<script>
+		window.location.href="dashboard.php";
+		
+		</script>
 			
-			<script>
-			window.location.href="dashboard.php";
-			</script>
 			
-		<?php }
-	 }
-	 
-	 else{
-		 
-		 echo "<font color='red'> Email or password is wrong... </font>";
-		 
-	 }
+			
+			<?php
+			
+			
+		}			
+			
 		}
-	 ?>
-							
+		}
+		?>				
 							
 							
 							<form class="form-auth-small" action="#" method="post">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">
-									Email</label>
-									<input type="email" name="email" class="form-control" id="signin-email" 
-									 placeholder="Email">
+									Enter Password </label>
+									<input type="hidden" name="token" 
+									value="<?php echo $_SESSION["token"]?>">
+			<input type="password" name="password" class="form-control" id="signin-email" 
+									 placeholder="Enter Password" autocomplete="off">
 								</div>
+								
+								
+								
 								<div class="form-group">
-									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" name="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
-								</div>
-								<div class="form-group clearfix">
-									<label class="fancy-checkbox element-left">
-										<input type="checkbox">
-										<span>Remember me</span>
+									<label for="signin-password" class="control-label sr-only">
+									Confirmed Password
+									
 									</label>
+									<input type="password" name="c_password" class="form-control" 
+									id="signin-password"  autocomplete="off"
+									placeholder="Confirmed Password">
 								</div>
-								<button type="submit" name="login_btn" class="btn btn-primary btn-lg btn-block">LOGIN</button>
-								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>
-								</div>
+								
+								<button type="submit" name="set_password_btn" 
+								class="btn btn-primary btn-lg btn-block">
+								Change Password
+								
+								</button>
+								
 							</form>
 						</div>
 					</div>
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">We Welcome to you  Vendor Account</h1>
-							<p>Developed By Hs code Solution </p>
+							<h1 class="heading">Set Your Password be do not share this password to others </h1>
+							
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -127,3 +127,18 @@ and vendor_password='".$pass."'
 </body>
 
 </html>
+<?php
+
+}//end of session id and token 
+else{
+	
+	?>
+	<script>
+	window.location.href="index.php";
+	</script>
+	
+	
+	<?php
+}
+
+?>

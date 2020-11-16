@@ -1,6 +1,9 @@
 <?php
 require("../../include/conn.php");//this is connection file 
 session_start();
+if(isset($_SESSION["vendor_id"])&& $_SESSION["token"]){
+
+
 if(!isset($_SESSION["product_random_id"])){
 	
 	
@@ -18,7 +21,7 @@ $third_cat=$_POST["third_cat"];//third category
 $sale=$_POST["sale"];
 $date=date("d-M-Y");
 
-$uploadsDir = "product_images/";
+$uploadsDir = "../../admin/plugin/product_images/";
         $allowedFileType = array('jpg','png','jpeg');
         
         // Velidate if files exist
@@ -65,6 +68,8 @@ $uploadsDir = "product_images/";
 			}
 $insert_product=mysqli_query($conn,"
         INSERT INTO `products` (`pro_id`, 
+		
+		`vendor_id`, 
 		`product_random_id`,
 		`cat_id`, 
 		`sub_catid`,
@@ -76,7 +81,8 @@ $insert_product=mysqli_query($conn,"
 		`sale`,
 		`uploading_date`
 		) 
-		VALUES (NULL, 
+		VALUES (NULL,
+        '".$_SESSION['vendor_id']."',		
 		'".$_SESSION["product_random_id"]."',
 		'".$main_cat."',
 		'".$sub_cat."',
@@ -96,5 +102,5 @@ $insert_product=mysqli_query($conn,"
 		<?php
 		 }//end of if move uploaded file
 	
-
+}//end of session vendor id and token id 
 ?>

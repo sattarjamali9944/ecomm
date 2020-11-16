@@ -1,7 +1,8 @@
 <?php
 session_start();
+error_reporting(0);
 require("../include/conn.php");
-if(isset($_SESSION["admin_id"])){
+if(isset($_SESSION["vendor_id"])){
 
 ?>
 
@@ -77,7 +78,12 @@ INNER JOIN main_catogories ON
 main_catogories.cat_id = products.cat_id INNER JOIN 
 sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
  INNER JOIN third_level_category ON 
-products.third_cat_id = third_level_category.third_cat_id") or die(mysqli_error($conn));
+products.third_cat_id = third_level_category.third_cat_id
+
+where products.vendor_id='".$_SESSION['vendor_id']."'
+and products.pro_id='".mysqli_real_escape_string($conn,$_GET['pro_id'])."'
+
+") or die(mysqli_error($conn));//products detail query
 								
 								$count=mysqli_num_rows($query);
 								if($count > 0){	?>
@@ -166,7 +172,7 @@ while($fetch_images=mysqli_fetch_array($get_images)){
 	$product_image=$fetch_images["image_name"];
 ?>
 
-<img src="plugin/product_images/<?php echo $product_image;?>" 
+<img src="../admin/plugin/product_images/<?php echo $product_image;?>" 
 style="height:50px; width:50px;">
 
 <?php

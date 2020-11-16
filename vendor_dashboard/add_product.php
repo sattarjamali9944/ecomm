@@ -1,7 +1,7 @@
 <?php
 session_start();
 require("../include/conn.php");
-if(isset($_SESSION["admin_id"])){
+if(isset($_SESSION["vendor_id"]) && isset($_SESSION["token"])){
 
 ?>
 
