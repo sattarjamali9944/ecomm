@@ -56,6 +56,9 @@
 									<li><a href="add_sub_category.php" class="">Sub Categories</a></li>
 									<li><a href="add_third_category.php" class="">
 									Third Child Categories</a></li>
+									<li><a href="add_delivery_cat.php" class="">
+									Delivery Charges Categories</a></li>
+									
 								</ul>
 							</div>
 						</li>
@@ -74,10 +77,11 @@
 					
 						<li><a href="users.php" class=""><i class="lnr lnr-user"></i> 
 						<span>Users</span></a></li>
-						<li><a href="products.php" class="">
-						<i class="lnr lnr-chart"></i> <span>Products</span></a></li>
+						
 						<li><a href="orders.php" class=""><i class="lnr lnr-cog"></i> 
 						<span>Orders</span></a></li>
+						<li><a href="add_city.php" class=""><i class="fa fa-map-marker"></i> 
+						<span>Add City</span></a></li>
 						
 						</ul>
 				</nav>

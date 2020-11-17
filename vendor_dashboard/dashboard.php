@@ -83,17 +83,17 @@ where products.vendor_id='".$_SESSION["vendor_id"]."'") or
 									<div class="metric">
 										<span class="icon"><i class="fa fa-lock"></i></span>
 										<p>
-											<span class="number">274,678</span>
+<span class="number">Password</span>
 											<span class="title"><a href="change_pass.php">Change Password</a></span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-bar-chart"></i></span>
+										<span class="icon"><i class="fa fa-plane"></i></span>
 										<p>
-											<span class="number">35%</span>
-											<span class="title">Conversions</span>
+											<span class="number"><i class="fa fa-plane"></i></span>
+											<span class="title"><a href="">Delivery Setting</a></span>
 										</p>
 									</div>
 								</div>
@@ -104,7 +104,8 @@ where products.vendor_id='".$_SESSION["vendor_id"]."'") or
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">
-										<span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
+										<span class="number">2,3515</span> <span class="percentage">
+										<i class="fa fa-caret-up text-success"></i> 12%</span>
 										<span class="info-label">Total Sales</span>
 									</div>
 									<div class="weekly-summary text-right">

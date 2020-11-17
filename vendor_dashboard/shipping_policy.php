@@ -24,6 +24,7 @@ if(isset($_SESSION["vendor_id"]) || isset($_SESSION["token"])){
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@ if(isset($_SESSION["vendor_id"]) || isset($_SESSION["token"])){
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">Shipping Policy</h3>
+					<h3 class="page-title">Shipping/Delivery Policy</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- BASIC TABLE -->
@@ -67,59 +68,213 @@ if(isset($_GET["msg"])){
 
 <?php
 
-$already_shipping_charges=mysqli_query($conn,"select * from delivery_setting
-
-where vendor_id='".$_SESSION['vendor_id']."'
+$already_shipping_charges=mysqli_query($conn,"select * from  deal_in_city
+inner join city on deal_in_city.city_id=city.city_id
+where vendor_id='".$_SESSION['vendor_id']."' and  status='Yes'
 ")or die(mysqli_error($conn));
 $count_shipping=mysqli_num_rows($already_shipping_charges);
 if($count_shipping > 0){
-if($fetch_shipping=mysqli_fetch_array($already_shipping_charges))
-$shipping_charges_value=$fetch_shipping["shipping_amount"];	
 ?>	
-<div class="col-sm-5" style="float:left;">
-<h1>Add Shipping Charges</h1>
+	<h1>Add Shipping Charges</h1>
+<?php 	
+while($fetch_shipping=mysqli_fetch_array($already_shipping_charges))
+{
+
+$deal_in_city_id=$fetch_shipping["deal_in_city_id"];
+$city_name=$fetch_shipping["city_name"];
+$city_id=$fetch_shipping["city_id"];
+?>	
+<div class="row">
+<div class="col-sm-12" style="float:left;">
+
+
+<?php
+
+$already_in_delivery_setting=mysqli_query($conn,"select * from delivery_setting
+where city_id='".$city_id."' and vendor_id='".$_SESSION['vendor_id']."'
+") or die(mysqli_error($conn));
+$count_delivery_setting=mysqli_num_rows($already_in_delivery_setting);
+
+?>
+
 <form method="post" action="plugin/update_shipping.php" enctype="multipart/form-data" >
- <div class="form-group">
-<label>Enter Shipping Value</label>
-<input type="text" name="shipping_value" max="5" value="<?php echo $shipping_charges_value;?>" class="form-control" placeholder="100">
-</div>
 
+<script>
+$(document).ready(function(){
+$("#heavy_value<?php echo $deal_in_city_id;?>").change(function(){
 
+var city_id=$("#city_id<?php echo $city_id;?>").val();
+var heavy=$("#heavy_value<?php echo $deal_in_city_id;?>").val();
+$.ajax({
+            type:"POST",
+            url:"set_delivery_setting_ajax.php",
+            data:{city_id:city_id,heavy:heavy},
+            
+            success: function(data) {
+           
+				$("#resulth<?php echo $city_id;?>").html(data);
+            },
+            error: function(err) {
+          }
+        });
+		});	
+$("#normal_value<?php echo $deal_in_city_id;?>").change(function(){
 
-<input type="submit" name="shipping_btn" value="Save" class="form-control" class="btn btn-primary">
+var city_id=$("#city_id<?php echo $city_id;?>").val();
+var normal=$("#normal_value<?php echo $deal_in_city_id;?>").val();
 
+$.ajax({
+            type:"POST",
+            url:"set_delivery_setting_ajax.php",
+            data:{city_id:city_id,normal:normal},
+            
+            success: function(data) {
+           
+				$("#resultn<?php echo $city_id;?>").html(data);
+            },
+            error: function(err) {
+          
+            }
+        });
+						
+	
+});
+
+$("#hand_carry_value<?php echo $deal_in_city_id;?>").change(function(){
+var city_id=$("#city_id<?php echo $city_id;?>").val();
+var hand_carry_value=$("#hand_carry_value<?php echo $deal_in_city_id;?>").val();
+
+$.ajax({
+            type:"POST",
+            url:"set_delivery_setting_ajax.php",
+            data:{city_id:city_id,hand_carry_value:hand_carry_value},
+            
+            success: function(data) {
+           
+				$("#resulthc<?php echo $city_id;?>").html(data);
+            },
+            error: function(err) {
+          
+            }
+        });
+						
+	
+});
 
 	
-</form>
-</div>
+	
+});
 
-<?php	
-}
+</script>
+<?php
+
+
+if($count_delivery_setting > 0){
+if($fetch_data=mysqli_fetch_array($already_in_delivery_setting)){	
+  $heavy_charges=$fetch_data["heavy_amount_charges"];
+  $medium_charges=$fetch_data["medium_amount_charges"];
+  $hand_carry_charges=$fetch_data["hand_carry_amount_charges"];
+  ?>
+  
+  <div class="col-sm-2">
+ <div class="form-group">
+ <input type="hidden" id="city_id<?php echo $city_id;?>" value="<?php echo $city_id;?>" >
+<label>City</label>
+<input type="text" class="form-control" value="<?php echo $city_name;?>" disabled>
+
+</div>
+</div>
+ 
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Heavy Product Charges</label>
+<input type="text" name="shipping_value" id="heavy_value<?php echo $deal_in_city_id;?>" 
+value="<?php echo $heavy_charges;?>"
+
+max="5"  class="form-control" placeholder="100">
+<div id="resulth<?php echo $city_id;?>"></div>
+</div>
+</div>
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Normal Level Product Charges</label>
+<input type="text" id="normal_value<?php echo $deal_in_city_id;?>" max="5"  
+class="form-control" value="<?php echo $medium_charges;?>" placeholder="100">
+<div id="resultn<?php echo $city_id;?>"></div>
+</div>
+</div>
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Hand Carry Product Charges</label>
+<input type="text" id="hand_carry_value<?php echo $deal_in_city_id;?>" max="5" 
+value="<?php echo $hand_carry_charges;?>"
+
+ class="form-control" placeholder="100">
+<div id="resulthc<?php echo $city_id;?>"></div>
+</div>
+</div>
+  
+  
+  
+  <?php 
+}//end of fetch data s	
+}//end of count delivery setting
 else{
 ?>
 
-
-<div class="col-sm-5" style="float:left;">
-<h1>Add Shipping Charges</h1>
-<form method="post" action="plugin/shipping.php" enctype="multipart/form-data" >
+ <div class="col-sm-2">
  <div class="form-group">
-<label>Enter Shipping Value</label>
-<input type="text" name="shipping_value" max="5" class="form-control" placeholder="100">
+ <input type="hidden" id="city_id<?php echo $city_id;?>" value="<?php echo $city_id;?>" >
+<label>City</label>
+<input type="text" class="form-control" value="<?php echo $city_name;?>" disabled>
+
+</div>
+</div>
+ 
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Heavy Product Charges</label>
+<input type="text" name="shipping_value" id="heavy_value<?php echo $deal_in_city_id;?>" max="5"  class="form-control" placeholder="100">
+<div id="resulth<?php echo $city_id;?>"></div>
+</div>
+</div>
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Normal Level Product Charges</label>
+<input type="text" id="normal_value<?php echo $deal_in_city_id;?>" max="5"  class="form-control" placeholder="100">
+<div id="resultn<?php echo $city_id;?>"></div>
+</div>
+</div>
+<div class="col-sm-3">
+ <div class="form-group">
+<label>Hand Carry Product Charges</label>
+<input type="text" id="hand_carry_value<?php echo $deal_in_city_id;?>" max="5"  class="form-control" placeholder="100">
+<div id="resulthc<?php echo $city_id;?>"></div>
+</div>
 </div>
 
 
+<?php
+}
 
-<input type="submit" name="shipping_btn" value="Save" class="form-control" class="btn btn-primary">
-
+?>
 
 	
 </form>
 </div>
+</div>
+<?php	
+}
+
+?>
+
+
+
 <?php
 }
 ?>
 
-							</div>
+							
 							</div>
 							<!-- END BASIC TABLE -->
 						</div>
@@ -138,7 +293,7 @@ else{
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>

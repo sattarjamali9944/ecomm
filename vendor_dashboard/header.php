@@ -81,9 +81,29 @@
 								</ul>
 							</div>
 						</li>
+						
+						<li>
+							<a href="#subPages4" data-toggle="collapse" class="collapsed">
+							<i class="fa fa-plane"></i> <span>Delivery/shipping Setting</span> 
+							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages4" class="collapse ">
+								<ul class="nav">
+								    <li><a href="city_setting.php" class="">
+									City Setting
+									
+									</a></li>
+									 <li><a href="shipping_policy.php" class="">
+								Shipping Policy 
+									
+									</a></li>
+									
+									
+								</ul>
+							</div>
+						</li>
+						
 					
-						<li><a href="shipping_policy.php" class=""><i class="fa fa-plane"></i> 
-						<span>Shipping Charges</span></a></li>
+					
 						
 						</ul>
 				</nav>

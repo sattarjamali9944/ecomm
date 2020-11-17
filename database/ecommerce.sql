@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2020 at 03:51 PM
+-- Generation Time: Nov 16, 2020 at 06:57 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_delivery_category`
+--
+
+CREATE TABLE `add_delivery_category` (
+  `delivery_cat_id` int(11) NOT NULL,
+  `delivery_cat_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `add_delivery_category`
+--
+
+INSERT INTO `add_delivery_category` (`delivery_cat_id`, `delivery_cat_name`) VALUES
+(2, 'Heavyy'),
+(3, 'Normal'),
+(4, 'Hand Carry');
 
 -- --------------------------------------------------------
 
@@ -103,12 +123,57 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `city`
+--
+
+CREATE TABLE `city` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`city_id`, `city_name`) VALUES
+(1, 'Lahore '),
+(2, 'Islamabad'),
+(3, 'Peshawar'),
+(4, 'Quetta'),
+(5, 'Sukkarr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deal_in_city`
+--
+
+CREATE TABLE `deal_in_city` (
+  `deal_in_city_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `vendor_id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deal_in_city`
+--
+
+INSERT INTO `deal_in_city` (`deal_in_city_id`, `city_id`, `vendor_id`, `status`) VALUES
+(5, 1, 19, 'Yes'),
+(6, 2, 19, 'Yes'),
+(7, 3, 19, 'No');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `delivery_setting`
 --
 
 CREATE TABLE `delivery_setting` (
   `delivery_setting_id` int(11) NOT NULL,
   `vendor_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `shipping_amount` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,9 +181,8 @@ CREATE TABLE `delivery_setting` (
 -- Dumping data for table `delivery_setting`
 --
 
-INSERT INTO `delivery_setting` (`delivery_setting_id`, `vendor_id`, `shipping_amount`) VALUES
-(1, 0, '10'),
-(4, 19, '110');
+INSERT INTO `delivery_setting` (`delivery_setting_id`, `vendor_id`, `city_id`, `shipping_amount`) VALUES
+(1, 0, 0, '10');
 
 -- --------------------------------------------------------
 
@@ -553,6 +617,12 @@ INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `product_id`) VALUES
 --
 
 --
+-- Indexes for table `add_delivery_category`
+--
+ALTER TABLE `add_delivery_category`
+  ADD PRIMARY KEY (`delivery_cat_id`);
+
+--
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
@@ -569,6 +639,18 @@ ALTER TABLE `billing_address`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`);
+
+--
+-- Indexes for table `city`
+--
+ALTER TABLE `city`
+  ADD PRIMARY KEY (`city_id`);
+
+--
+-- Indexes for table `deal_in_city`
+--
+ALTER TABLE `deal_in_city`
+  ADD PRIMARY KEY (`deal_in_city_id`);
 
 --
 -- Indexes for table `delivery_setting`
@@ -647,6 +729,12 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `add_delivery_category`
+--
+ALTER TABLE `add_delivery_category`
+  MODIFY `delivery_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
@@ -663,6 +751,18 @@ ALTER TABLE `billing_address`
 --
 ALTER TABLE `cart`
   MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `city`
+--
+ALTER TABLE `city`
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `deal_in_city`
+--
+ALTER TABLE `deal_in_city`
+  MODIFY `deal_in_city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `delivery_setting`
