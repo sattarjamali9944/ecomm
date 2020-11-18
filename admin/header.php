@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href=" dashbord.php"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="dashboard.php"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -43,12 +43,12 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-					<li><a href=" dashbord.php" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+					<li><a href="dashboard.php" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						
 					
 					<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed">
-							<i class="lnr lnr-file-empty"></i> <span>Categories Settings</span> 
+							<i class="fa fa-list"></i> <span>Categories Settings</span> 
 							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
@@ -64,7 +64,7 @@
 						</li>
 					<li>
 							<a href="#subPages2" data-toggle="collapse" class="collapsed">
-							<i class="lnr lnr-file-empty"></i> <span>Products</span> 
+							<i class="fa-product-hunt"></i> <span>Products Setting</span> 
 							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages2" class="collapse ">
 								<ul class="nav">
@@ -77,9 +77,13 @@
 					
 						<li><a href="users.php" class=""><i class="lnr lnr-user"></i> 
 						<span>Users</span></a></li>
+						<li><a href="vendors.php" class=""><i class="fa fa-users"></i> 
+						<span>Vendors</span></a></li>
 						
-						<li><a href="orders.php" class=""><i class="lnr lnr-cog"></i> 
+						<li><a href="orders.php" class=""><i class="fa fa-shopping-cart"></i> 
 						<span>Orders</span></a></li>
+						<li><a href="currency_setting.php" class=""><i class="fa fa-dollar"></i> 
+						<span>Currency Setting</span></a></li>
 						<li><a href="add_city.php" class=""><i class="fa fa-map-marker"></i> 
 						<span>Add City</span></a></li>
 						

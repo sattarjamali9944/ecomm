@@ -153,6 +153,33 @@ id="change_main_cat"
 <label>Price</label>
 <input type="text" name="price" class="form-control" placeholder="Price">
 </div>
+<?php
+$get_single_delivery=mysqli_query($conn,"SELECT * FROM add_delivery_category") or die(mysqli_error($conn));//delivery query
+$count_cities=mysqli_num_rows($get_single_delivery);//count of delivery 
+if($count_cities > 0){//if count  greater than 0
+?>
+<div class="form-group">
+
+<label>Delivery Weight(for delivery charges)</label>
+<select class="form-control" name="delivery_cat_id">
+<?php
+	
+	while($fetch=mysqli_fetch_array($get_single_delivery)){
+	$delivery_id=$fetch["delivery_cat_id"];//delivery id 
+	$delivery_name=$fetch["delivery_cat_name"];//delivery name 
+	?>
+<option value="<?php echo $delivery_id?>"><?php echo $delivery_name;?></option>
+
+<?php
+	}//end of while loop
+
+?>
+</select>
+</div>
+<?php
+}
+
+?>
 
 <div class="user-image mb-3 text-center">
         <div class="imgGallery" style="float:left;"> 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2020 at 06:57 PM
+-- Generation Time: Nov 17, 2020 at 07:54 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -162,7 +162,9 @@ CREATE TABLE `deal_in_city` (
 INSERT INTO `deal_in_city` (`deal_in_city_id`, `city_id`, `vendor_id`, `status`) VALUES
 (5, 1, 19, 'Yes'),
 (6, 2, 19, 'Yes'),
-(7, 3, 19, 'No');
+(7, 3, 19, 'Yes'),
+(8, 4, 19, 'Yes'),
+(9, 5, 19, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -174,15 +176,20 @@ CREATE TABLE `delivery_setting` (
   `delivery_setting_id` int(11) NOT NULL,
   `vendor_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
-  `shipping_amount` varchar(255) NOT NULL
+  `heavy_amount_charges` int(11) NOT NULL,
+  `medium_amount_charges` int(11) NOT NULL,
+  `hand_carry_amount_charges` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `delivery_setting`
 --
 
-INSERT INTO `delivery_setting` (`delivery_setting_id`, `vendor_id`, `city_id`, `shipping_amount`) VALUES
-(1, 0, 0, '10');
+INSERT INTO `delivery_setting` (`delivery_setting_id`, `vendor_id`, `city_id`, `heavy_amount_charges`, `medium_amount_charges`, `hand_carry_amount_charges`) VALUES
+(10, 19, 1, 101, 101, 102),
+(11, 19, 2, 103, 104, 105),
+(12, 19, 3, 106, 107, 108),
+(13, 19, 4, 443, 700, 1000);
 
 -- --------------------------------------------------------
 
@@ -272,7 +279,12 @@ INSERT INTO `multiples_images` (`image_id`, `product_random_id`, `image_name`) V
 (70, '1254202477\r\n', 'lap4.jpg'),
 (71, '1254202478\r\n\r\n', 'lap5.jpg'),
 (72, '1929163585', '1605433588Product-Image-1-16.jpg'),
-(73, '1929163585', '1605433630Product-Image-1-16.jpg');
+(73, '1929163585', '1605433630Product-Image-1-16.jpg'),
+(74, '277064901', '1605632435product-7.jpg'),
+(75, '544128755', '1605632521product-10.jpg'),
+(76, '1269991121', '1605632654product-2.jpg'),
+(77, '928028665', '1605633557product-3.jpg'),
+(78, '928028665', '1605633569product-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -350,44 +362,49 @@ CREATE TABLE `products` (
   `pro_name` varchar(255) NOT NULL,
   `pro_des` text NOT NULL,
   `pro_price` varchar(255) NOT NULL,
+  `delivery_cat_id` int(11) NOT NULL,
   `sale` int(11) NOT NULL,
   `uploading_date` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
-  `status` int(2) NOT NULL
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pro_id`, `vendor_id`, `product_random_id`, `cat_id`, `sub_catid`, `third_cat_id`, `pro_name`, `pro_des`, `pro_price`, `sale`, `uploading_date`, `role`, `status`) VALUES
-(24, 18, '261947653', 6, 7, 8, 'product number 9', 'Thie is descrition of web', '400', 20, '', 'recommendation', 0),
-(25, 0, '1302886213', 6, 8, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', 'recommendation', 0),
-(26, 0, '1254202475', 6, 6, 7, 'laptop', 'Description', '1000', 10, '11-Nov-2020', 'recommendation', 0),
-(27, 0, '1302886215', 6, 9, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(28, 0, '9', 6, 10, 7, 'product number 7', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(29, 0, '10', 6, 10, 8, 'product number 9', 'Thie is descrition of web', '400', 20, '', '', 0),
-(30, 0, '11', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(31, 0, '12', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(32, 0, '13', 6, 11, 7, 'product number 7', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(33, 0, '14', 6, 11, 8, 'product number 9', 'Thie is descrition of web', '400', 20, '', '', 0),
-(34, 0, '15', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(35, 0, '16', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(36, 0, 'l1', 6, 12, 8, 'product number 9', 'Thie is descrition of web', '400', 20, '', '', 0),
-(37, 0, 'l2', 6, 12, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(38, 0, 'l3', 6, 12, 7, 'product number 7', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(42, 0, '13', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(43, 0, '37', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(44, 0, 'l4', 6, 12, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(45, 0, 'l5', 6, 12, 7, 'product number 7', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(46, 0, 'k1', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(47, 0, 'k2', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(48, 0, 'k3', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 30, '11-Nov-2020', '', 0),
-(49, 0, 'k4', 6, 13, 7, 'product number 7', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(50, 0, '1254202476', 6, 6, 7, 'Apple laptop ', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(51, 0, '1254202477\r\n', 6, 6, 7, 'Apple laptop Gray\r\n', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(52, 0, '1254202478\r\n\r\n', 6, 6, 7, 'Destop Computer', 'Description', '1000', 10, '11-Nov-2020', '', 0),
-(53, 19, '1929163585', 3, 7, 7, 'speekers', 'this is description ', '1000', 50, '15-Nov-2020', '', 0);
+INSERT INTO `products` (`pro_id`, `vendor_id`, `product_random_id`, `cat_id`, `sub_catid`, `third_cat_id`, `pro_name`, `pro_des`, `pro_price`, `delivery_cat_id`, `sale`, `uploading_date`, `role`, `status`) VALUES
+(24, 18, '261947653', 6, 7, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', 'recommendation', 'Active'),
+(25, 0, '1302886213', 6, 8, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', 'recommendation', 'Active'),
+(26, 0, '1254202475', 6, 6, 7, 'laptop', 'Description', '1000', 0, 10, '11-Nov-2020', 'recommendation', 'Active'),
+(27, 0, '1302886215', 6, 9, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', 'Deactive'),
+(28, 0, '9', 6, 10, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(29, 0, '10', 6, 10, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
+(30, 0, '11', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(31, 0, '12', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(32, 0, '13', 6, 11, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(33, 0, '14', 6, 11, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
+(34, 0, '15', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(35, 0, '16', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(36, 0, 'l1', 6, 12, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
+(37, 0, 'l2', 6, 12, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(38, 0, 'l3', 6, 12, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(42, 0, '13', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(43, 0, '37', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(44, 0, 'l4', 6, 12, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(45, 0, 'l5', 6, 12, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(46, 0, 'k1', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(47, 0, 'k2', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(48, 0, 'k3', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(49, 0, 'k4', 6, 13, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(50, 0, '1254202476', 6, 6, 7, 'Apple laptop ', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(51, 0, '1254202477\r\n', 6, 6, 7, 'Apple laptop Gray\r\n', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(52, 0, '1254202478\r\n\r\n', 6, 6, 7, 'Destop Computer', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(53, 19, '1929163585', 3, 7, 7, 'speekers', 'this is description ', '1000', 0, 50, '15-Nov-2020', '', '0'),
+(54, 19, '277064901', 3, 7, 7, 'Telivision', 'hfjsd', '1000', 0, 3, '17-Nov-2020', '', '0'),
+(55, 19, '544128755', 3, 7, 7, 'product number 7', 'This is title ', '1000', 0, 22, '17-Nov-2020', '', '0'),
+(56, 19, '1269991121', 6, 18, 18, 'product number 6', 'T', '1000', 0, 22, '17-Nov-2020', '', '0'),
+(57, 19, '928028665', 3, 7, 7, 'Telivision', 'This is good ', '1000', 4, 22, '17-Nov-2020', '', '0');
 
 -- --------------------------------------------------------
 
@@ -528,6 +545,7 @@ CREATE TABLE `vendor` (
   `vendor_personal_address` text NOT NULL,
   `vendor_email` varchar(255) NOT NULL,
   `vendor_phone` varchar(255) NOT NULL,
+  `vendor_logo` varchar(255) NOT NULL,
   `vendor_status` varchar(255) NOT NULL,
   `uploadind_date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -536,24 +554,24 @@ CREATE TABLE `vendor` (
 -- Dumping data for table `vendor`
 --
 
-INSERT INTO `vendor` (`vendor_id`, `vendor_first_name`, `vendor_last_name`, `vendor_ntn_number`, `vendor_company_name`, `vendor_cnic`, `vendor_password`, `vendor_address`, `vendor_personal_address`, `vendor_email`, `vendor_phone`, `vendor_status`, `uploadind_date`) VALUES
-(3, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(4, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(5, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(6, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(7, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(8, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(9, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '14-Nov-2020'),
-(10, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(11, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(12, 'Muhammad', 'hassan', '', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(13, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(14, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(15, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(16, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(17, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '14-Nov-2020'),
-(18, 'vendor one ', 'vendor last ', '1233343343333', 'vendor company name ', '1122333434343', '', 'Karachi Qayumabad', 'defense Karachii', 'test@gmail.com', '03330939019', '', '15-Nov-2020'),
-(19, 'vendor two sahe', 'vendor two s', '1233343343333', 'Company Seprate', '4540347853989', 'sattar9944', 'address1', 'address2', 'sattartest@gmail.com', '03330939019', '', '15-Nov-2020');
+INSERT INTO `vendor` (`vendor_id`, `vendor_first_name`, `vendor_last_name`, `vendor_ntn_number`, `vendor_company_name`, `vendor_cnic`, `vendor_password`, `vendor_address`, `vendor_personal_address`, `vendor_email`, `vendor_phone`, `vendor_logo`, `vendor_status`, `uploadind_date`) VALUES
+(3, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', 'Active', '14-Nov-2020'),
+(4, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(5, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(6, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(7, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(8, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(9, 'Muhammad', 'hassan', '1233343343333', '', 'compant', '', '45403478539899', 'address1', 'address2', 'sattar2k10@gmail.com', '', '03330939019', '14-Nov-2020'),
+(10, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(11, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(12, 'Muhammad', 'hassan', '', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(13, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(14, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(15, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(16, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403-47853989-9', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(17, 'Muhammad', 'hassan', '1233343343333', 'compant', '45403478539899', '', 'address1', 'address2', 'sattar2k10@gmail.com', '03330939019', '', '', '14-Nov-2020'),
+(18, 'vendor one ', 'vendor last ', '1233343343333', 'vendor company name ', '1122333434343', '', 'Karachi Qayumabad', 'defense Karachii', 'test@gmail.com', '03330939019', '', '', '15-Nov-2020'),
+(19, 'vendor two sahe', 'vendor two s', '1233343343333', 'Company Seprate', '4540347853989', 'sattar9944', 'address1', 'address2', 'sattartest@gmail.com', '03330939019', '', '', '15-Nov-2020');
 
 -- --------------------------------------------------------
 
@@ -762,13 +780,13 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `deal_in_city`
 --
 ALTER TABLE `deal_in_city`
-  MODIFY `deal_in_city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `deal_in_city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `delivery_setting`
 --
 ALTER TABLE `delivery_setting`
-  MODIFY `delivery_setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `delivery_setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `main_catogories`
@@ -780,7 +798,7 @@ ALTER TABLE `main_catogories`
 -- AUTO_INCREMENT for table `multiples_images`
 --
 ALTER TABLE `multiples_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -792,7 +810,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `set_currency`

@@ -11,7 +11,7 @@ if ($main_categories_query) {
 	# code...
 	?>
 <script type="text/javascript">
-	window.location.href="../set_currency.php?msg=Currency Sign  is successfully addedd";
+	window.location.href="../currency_setting.php?msg=Currency Sign  is successfully addedd";
 </script>
 
 

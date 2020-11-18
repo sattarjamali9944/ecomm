@@ -12,10 +12,11 @@ $_SESSION["product_random_id"]=$product_random_id;
 $product_name=mysqli_real_escape_string($conn,$_POST["pro_name"]);//product name 
 $description=mysqli_real_escape_string($conn,$_POST["description"]);//this is description
 $price=mysqli_real_escape_string($conn,$_POST["price"]);//this is price
-$main_cat=$_POST["main_cat"];//main category
-$sub_cat=$_POST["sub_cat"];//sub category
-$third_cat=$_POST["third_cat"];//third category
-$sale=$_POST["sale"];
+$delivery_cat_id=mysqli_real_escape_string($conn,$_POST['delivery_cat_id']);
+$main_cat=mysqli_real_escape_string($conn,$_POST["main_cat"]);//main category
+$sub_cat=mysqli_real_escape_string($conn,$_POST["sub_cat"]);//sub category
+$third_cat=mysqli_real_escape_string($conn,$_POST["third_cat"]);//third category
+$sale=mysqli_real_escape_string($conn,$_POST["sale"]);
 $date=date("d-M-Y");
 
 $uploadsDir = "product_images/";
@@ -73,6 +74,7 @@ $insert_product=mysqli_query($conn,"
 		`pro_name`, 
 		`pro_des`,
 		`pro_price`,
+		`delivery_cat_id`,
 		`sale`,
 		`uploading_date`
 		) 
@@ -83,7 +85,8 @@ $insert_product=mysqli_query($conn,"
 		'".$third_cat."',
 		'".$product_name."', 
 		'".$description."', 
-		'".$price."', 
+		'".$price."',
+        '".$delivery_cat_id."',		
 		'".$sale."',
 		'".$date."'
 		)") or 

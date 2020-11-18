@@ -10,10 +10,10 @@ if(isset($_SESSION["admin_id"])){
 <html lang="en">
 
 <head>
-	<title>Products</title>
+	<title>Vendors</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, vendor-scalable=0">
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
@@ -46,118 +46,78 @@ if(isset($_SESSION["admin_id"])){
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">View Products</h3>
+					<h3 class="page-title">Vendors</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<!-- BASIC TABLE -->
 							<div class="panel">
-								
+								<div class="panel-heading">
+									<h3 class="panel-title">Vendors</h3>
+								</div>
 								<div class="panel-body">
 									<?php
-if(isset($_GET["msg"])){?>
-<div class="alert alert-success">
-<?php
-	echo $_GET["msg"];//if data is successfully addedd then this data is show
-	
-	
 
 
-?>
-
-</div>
-<?php
-}
-
-?>
-<h1>View Products</h1>
-<?php
-
-
-$query=mysqli_query($conn,"select * from products") or die(mysqli_error($conn));
+$query=mysqli_query($conn,"select * from vendor") or
+								die(mysqli_error($conn));
 								
 								$count=mysqli_num_rows($query);
 								if($count > 0){	?>
 								<table class="table">
 								<thead>
 								<th>Id</th>
-								<th>product Name</th>
-								<th>price</th>
-								<th>Description</th>
+								<th>vendor Name</th>
+								<th>phone</th>
+								<th>email</th>
 								<th>Image</th>
 								<th>Active/Deactive</th>
-								<th>View</th>
-								<th>Edit</th>
-								<th>Delete</th>
 								</thead>
 								
 								<?php
 								while($fetch=mysqli_fetch_array($query)){
-                                $product_id=$fetch["pro_id"];//product id 
-								$product_random_id=$fetch["product_random_id"];
-                                $product_name=$fetch["pro_name"];//pr
-								$product_des=$fetch["pro_des"];
-								$product_price=$fetch["pro_price"];
-								$status=$fetch["status"];
-							
+                                $vendor_id=$fetch["vendor_id"];//vendor id 
+                                $vendor_name=$fetch["vendor_first_name"];//vendor_name
+								$vendor_email=$fetch["vendor_email"];//vendor email
+								$vendor_phone=$fetch["vendor_phone"];//vendor_phone
+								$vendor_image=$fetch["vendor_logo"];//vendor_image
+								$status=$fetch["vendor_status"];//vendor satatus Active and Deactive
 								
 									?>
 <tbody>
 <tr>
-<td><?php echo $product_id;?></td>
-<td><?php echo $product_name;?></td>
-<td><?php 
+<td><?php echo $vendor_id;?></td>
+<td><?php echo $vendor_name;?></td>
+<td>&nbsp;<?php echo $vendor_phone;?></td>
+<td><?php echo $vendor_email;?></td>
+<?php
 
-$set=mysqli_query($conn,"SELECT * FROM set_currency
-") or die(mysqli_error($conn));//set currency query 
-$count_currencies=mysqli_num_rows($set);//count number of currency 
-if($count_currencies > 0){//if count currencies   greater than 0 
-
+if($vendor_image==""){
 	
-	while($fetch=mysqli_fetch_array($set)){//start while loop of currency
-	$currency_id=$fetch["currency_id"];//currency id 
-	echo $currency_name=$fetch["currecy_sign"];//currency Name 
-	
-	}
+	?>
+	<td><img src="main_category_images/no.png" style="height:50px; width:50px;"></td>
+<?php 	
 }
-?>&nbsp;<?php echo $product_price;?></td>
-<td><?php echo $product_des;?></td>
-<td>
-
+else
+{?>
+<td><img src="plugin/vendor_images/<?php echo $vendor_image;?>" style="height:50px; width:50px;"></td>
 <?php
-$get_images=mysqli_query($conn,"select * from multiples_images
-where product_random_id='".$product_random_id."' limit 1
-
-") or 
-die(mysqli_error($conn));
-$count_images=mysqli_num_rows($get_images);
-if($count_images){
-while($fetch_images=mysqli_fetch_array($get_images)){
-	$product_image=$fetch_images["image_name"];
+}
 ?>
 
-<img src="plugin/product_images/<?php echo $product_image;?>" 
-style="height:50px; width:50px;">
-
-<?php
-}//end of while loop
-}//end of count if 
-?>
-
-</td>
 <td>
 <script>
 $(document).ready(function(){
-$("#change<?php echo $product_id;?>").change(function(){
+$("#change<?php echo $vendor_id;?>").change(function(){
 
-var product_data=$("#change<?php echo $product_id;?>").val();
+var vendor_data=$("#change<?php echo $vendor_id;?>").val();
 					 $.ajax({
             type: "POST",
-            url: "product_active_deactive_ajax.php",
-            data: {product_data:product_data},
+            url: "vendor_active_deactive_ajax.php",
+            data: {vendor_data:vendor_data},
             //dataType: "JSON",
             success: function(data) {
            
-				$("#result<?php echo $product_id;?>").html(data);
+				$("#result<?php echo $vendor_id;?>").html(data);
              
    		           
    		    
@@ -176,18 +136,16 @@ var product_data=$("#change<?php echo $product_id;?>").val();
 
 </script>
 
-<div id="result<?php echo $product_id;?>"></div>
-<select class="form-control" id="change<?php echo $product_id;?>">
+<div id="result<?php echo $vendor_id;?>"></div>
+<select class="form-control" id="change<?php echo $vendor_id;?>">
 
 <option value="">Choos Status</option>
-<option value="ActiveX<?php echo $product_id;?>" <?php if($status=="Active")
+<option value="ActiveX<?php echo $vendor_id;?>" <?php if($status=="Active")
 {echo "selected=selected";}?>>Active</option>
-<option value="DeactiveX<?php echo $product_id;?>" <?php if($status=="Deactive")
+<option value="DeactiveX<?php echo $vendor_id;?>" <?php if($status=="Deactive")
 {echo "selected=selected";}?>>Deactive</option>
 </select></td>
-<td><a href="view_detail.php?pro_id=<?php echo $product_id;?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
-<td><a href="edit_product.php?pro_id=<?php echo $product_id;?>" class="btn btn-success"><i class="fa fa-pencil"></i></a></td>
-<td><a href="delete_product.php?pro_id=<?php echo $product_id;?>" class="btn btn-danger"><i class="fa fa-trash"></i> </a></td>
+
 </tr>
 </tbody>
 

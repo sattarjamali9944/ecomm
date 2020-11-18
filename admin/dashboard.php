@@ -1,5 +1,7 @@
 <?php
 session_start();
+require("../include/conn.php");
+if(isset($_SESSION["admin_id"])){
 
 ?>
 <!doctype html>
@@ -40,17 +42,30 @@ session_start();
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Weekly Overview</h3>
-							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
+							<h3 class="panel-title">Date</h3>
+							<p class="panel-subtitle">Period:<?php echo $date=date("d-M-Y h:i:s");?></p>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-download"></i></span>
+										<span class="icon"><i class="fa fa-users"></i></span>
 										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
+											<span class="number">
+											<?php 
+											
+											$user_query=mysqli_query($conn,"select * from users") or
+								die(mysqli_error($conn));
+								
+								echo $count_user=mysqli_num_rows($user_query);
+											
+											?>
+											
+											</span>
+											<span class="title">
+											
+											<a href="users.php">
+											Users</a></span>
 										</p>
 									</div>
 								</div>
@@ -58,17 +73,34 @@ session_start();
 									<div class="metric">
 										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
 										<p>
-											<span class="number">203</span>
-											<span class="title">Sales</span>
+											<span class="number"><?php 
+											
+											$vendor_query=mysqli_query($conn,"select * from vendor") or
+								die(mysqli_error($conn));
+								
+								echo $count_vendor=mysqli_num_rows($vendor_query);
+											
+											?></span>
+											<span class="title">Vendor</span>
 										</p>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-eye"></i></span>
+										<span class="icon"><i class="fa fa-dollar"></i></span>
 										<p>
-											<span class="number">274,678</span>
-											<span class="title">Visits</span>
+											<span class="number">
+											<?php 
+											
+											$orders_query=mysqli_query($conn,"select * from orders") or
+								die(mysqli_error($conn));
+								
+								echo $count_order=mysqli_num_rows($orders_query);
+											
+											?>
+											
+											</span>
+											<span class="title"><a href="order.php">Order</a></span>
 										</p>
 									</div>
 								</div>
@@ -529,3 +561,11 @@ session_start();
 </body>
 
 </html>
+<?php
+}
+else{
+	
+	header("location:index.php");
+	
+}
+?>
