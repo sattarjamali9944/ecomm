@@ -3,8 +3,7 @@ session_start();
 error_reporting(0);//hide error reporting of error
 require("include/conn.php");//connetion file 
 
-
-?>
+if(isset($_SESSION["user_id"])){?>
 
 
 <!DOCTYPE html>
@@ -858,3 +857,13 @@ if($count_currencies > 0){//if count  greater than 0
 </body>
 
 </html>
+<?php
+}
+else{
+	
+	header("location:login.php");
+	
+}
+
+
+?>

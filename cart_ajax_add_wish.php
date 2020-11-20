@@ -1,7 +1,9 @@
 <?php
 //this is add to cart through ajax and here we get the product id and quantity
 session_start();
-$_SESSION["user_id"];//this hot code of user id suppose here user id one 
+if(isset($_SESSION['user_id'])){
+$_SESSION["user_id"];//this hot code of user id suppose here user id one
+ 
 $total=0;
 require("include/conn.php");//this is connection file here we connect our database.
 $wish_id=$_POST["wish_id"];//this is product id 
@@ -20,4 +22,15 @@ VALUES (NULL, '".$_SESSION['user_id']."', '".$wish_id."')")or die(mysqli_error($
 $total_wishlist_qty=mysqli_query($conn,"select * from wishlist where user_id='".$_SESSION["user_id"]."'")or 
 die(mysqli_error($conn));
 echo $wcount_qty=mysqli_num_rows($total_wishlist_qty);
+}
+else{
+	
+	?>
+	<script>
+	alert("Please first login then add to whishlist");
+	</script>
+	
+	<?php
+}
+
 ?>

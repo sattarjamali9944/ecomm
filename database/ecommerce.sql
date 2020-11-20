@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 07:54 PM
+-- Generation Time: Nov 18, 2020 at 09:57 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -119,6 +119,15 @@ CREATE TABLE `cart` (
   `product_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `random_id`, `user_id`, `product_id`, `qty`) VALUES
+(47, 0, 0, 28, 12),
+(48, 0, 0, 31, 1),
+(49, 0, 0, 26, 1);
 
 -- --------------------------------------------------------
 
@@ -378,12 +387,12 @@ INSERT INTO `products` (`pro_id`, `vendor_id`, `product_random_id`, `cat_id`, `s
 (25, 0, '1302886213', 6, 8, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', 'recommendation', 'Active'),
 (26, 0, '1254202475', 6, 6, 7, 'laptop', 'Description', '1000', 0, 10, '11-Nov-2020', 'recommendation', 'Active'),
 (27, 0, '1302886215', 6, 9, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', 'Deactive'),
-(28, 0, '9', 6, 10, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
+(28, 0, '9', 6, 10, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', 'bestseller'),
 (29, 0, '10', 6, 10, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
-(30, 0, '11', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
+(30, 0, '11', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 70, '11-Nov-2020', '', '0'),
 (31, 0, '12', 6, 10, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
 (32, 0, '13', 6, 11, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
-(33, 0, '14', 6, 11, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
+(33, 0, '14', 6, 11, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', 'bestseller'),
 (34, 0, '15', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
 (35, 0, '16', 6, 11, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
 (36, 0, 'l1', 6, 12, 8, 'product number 9', 'Thie is descrition of web', '400', 0, 20, '', '', '0'),
@@ -397,10 +406,10 @@ INSERT INTO `products` (`pro_id`, `vendor_id`, `product_random_id`, `cat_id`, `s
 (47, 0, 'k2', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
 (48, 0, 'k3', 6, 13, 9, 'product number 8', 'deschgdfjkghk', '500', 0, 30, '11-Nov-2020', '', '0'),
 (49, 0, 'k4', 6, 13, 7, 'product number 7', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
-(50, 0, '1254202476', 6, 6, 7, 'Apple laptop ', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
-(51, 0, '1254202477\r\n', 6, 6, 7, 'Apple laptop Gray\r\n', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
-(52, 0, '1254202478\r\n\r\n', 6, 6, 7, 'Destop Computer', 'Description', '1000', 0, 10, '11-Nov-2020', '', '0'),
-(53, 19, '1929163585', 3, 7, 7, 'speekers', 'this is description ', '1000', 0, 50, '15-Nov-2020', '', '0'),
+(50, 0, '1254202476', 6, 6, 7, 'Apple laptop ', 'Description', '1000', 0, 10, '11-Nov-2020', 'bestseller', '0'),
+(51, 0, '1254202477\r\n', 6, 6, 7, 'Apple laptop Gray\r\n', 'Description', '1000', 0, 10, '11-Nov-2020', 'bestseller', '0'),
+(52, 0, '1254202478\r\n\r\n', 6, 6, 7, 'Destop Computer', 'Description', '1000', 0, 10, '11-Nov-2020', 'bestseller', 'bestseller'),
+(53, 19, '1929163585', 3, 7, 7, 'speekers', 'this is description ', '1000', 0, 50, '15-Nov-2020', 'bestseller', '0'),
 (54, 19, '277064901', 3, 7, 7, 'Telivision', 'hfjsd', '1000', 0, 3, '17-Nov-2020', '', '0'),
 (55, 19, '544128755', 3, 7, 7, 'product number 7', 'This is title ', '1000', 0, 22, '17-Nov-2020', '', '0'),
 (56, 19, '1269991121', 6, 18, 18, 'product number 6', 'T', '1000', 0, 22, '17-Nov-2020', '', '0'),
@@ -628,7 +637,8 @@ INSERT INTO `wishlist` (`wishlist_id`, `user_id`, `product_id`) VALUES
 (16, 17, 10),
 (17, 17, 9),
 (18, 17, 8),
-(19, 18, 10);
+(19, 18, 10),
+(20, 0, 26);
 
 --
 -- Indexes for dumped tables
@@ -768,7 +778,7 @@ ALTER TABLE `billing_address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -852,7 +862,7 @@ ALTER TABLE `vendor_files`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

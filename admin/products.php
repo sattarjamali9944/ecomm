@@ -82,8 +82,9 @@ $query=mysqli_query($conn,"select * from products") or die(mysqli_error($conn));
 								<th>Id</th>
 								<th>product Name</th>
 								<th>price</th>
-								<th>Description</th>
+							
 								<th>Image</th>
+								<th>Set Roll</th>
 								<th>Active/Deactive</th>
 								<th>View</th>
 								<th>Edit</th>
@@ -98,6 +99,7 @@ $query=mysqli_query($conn,"select * from products") or die(mysqli_error($conn));
 								$product_des=$fetch["pro_des"];
 								$product_price=$fetch["pro_price"];
 								$status=$fetch["status"];
+								$role=$fetch["role"];
 							
 								
 									?>
@@ -120,7 +122,7 @@ if($count_currencies > 0){//if count currencies   greater than 0
 	}
 }
 ?>&nbsp;<?php echo $product_price;?></td>
-<td><?php echo $product_des;?></td>
+
 <td>
 
 <?php
@@ -144,6 +146,50 @@ style="height:50px; width:50px;">
 ?>
 
 </td>
+<td>
+<script>
+$(document).ready(function(){
+$("#changerole<?php echo $product_id;?>").change(function(){
+
+var product_data=$("#changerole<?php echo $product_id;?>").val();
+					 $.ajax({
+            type: "POST",
+            url: "product_set_role_ajax.php",
+            data: {product_data:product_data},
+            //dataType: "JSON",
+            success: function(data) {
+           
+				$("#resultrole<?php echo $product_id;?>").html(data);
+             
+   		           
+   		    
+   		    
+            },
+            error: function(err) {
+          
+            }
+        });
+						
+	
+});	
+	
+	
+});
+
+</script>
+
+<div id="resultrole<?php echo $product_id;?>"></div>
+<select class="form-control" id="changerole<?php echo $product_id;?>">
+
+<option value="">Choos Status</option>
+<option value="bestsellerX<?php echo $product_id;?>" <?php if($role=="bestseller")
+{echo "selected=selected";}?>>Best Seller</option>
+<option value="featuredX<?php echo $product_id;?>" <?php if($role=="featured")
+{echo "selected=selected";}?>>Featured</option>
+
+<option value="recommendedX<?php echo $product_id;?>" <?php if($role=="recommended")
+{echo "selected=selected";}?>>Recommended</option>
+</select></td>
 <td>
 <script>
 $(document).ready(function(){

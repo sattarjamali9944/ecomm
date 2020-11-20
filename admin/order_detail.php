@@ -2,7 +2,7 @@
 session_start();
 require("../include/conn.php");
 error_reporting(0);
-if(isset($_SESSION["vendor_id"]) && isset($_SESSION["token"])){
+if(isset($_SESSION["admin_id"])){
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,15 +55,19 @@ and orders.order_id='".mysqli_real_escape_string($conn,$_GET["order_id"])."'
 
 ") or
 								die(mysqli_error($conn));
-				echo $count=mysqli_num_rows($orders_detail);
+				 $count=mysqli_num_rows($orders_detail);
 								if($count > 0){	
 			
 								while($fetch=mysqli_fetch_array($orders_detail)){
                                 $order_id=$fetch["order_id"];//user id
-                                $product_id=$fetch["product_id"];
-                                $product_name=$fetch["pro_name"];
-                                $product_random_id=$fetch["product_random_id"]; 								
-                                $buyer_name=$fetch["user_name"];//buyer id 								
+								$order_random_id=$fetch["unique_id"];
+                                $product_id=$fetch["product_id"];//product id 
+                                $product_name=$fetch["pro_name"];//product name 
+                                $product_random_id=$fetch["product_random_id"]; //product random nam 								
+                                $buyer_name=$fetch["user_name"];//buyer id 							
+								$buyer_phone=$fetch["user_phone"];
+								$buyer_email=$fetch["user_email"];
+								$image=$fetch["user_image"];
                                 $qty=$fetch["order_qty"];//qty 
 								$order_date=$fetch["order_date"];//order date
 								$status=$fetch["order_status"];//order status pending ,confirm and deliverd
@@ -77,27 +81,28 @@ and orders.order_id='".mysqli_real_escape_string($conn,$_GET["order_id"])."'
 								<div class="profile-header">
 									<div class="overlay"></div>
 									<div class="profile-main">
-										<img src="assets/img/user-medium.png" class="img-circle" alt="Avatar">
+									   <?php
+
+if($user_image==""){
+	
+	?>
+	<img src="main_category_images/no.png" class="img-circle" style="height:50px; width:50px;">
+<?php 	
+}
+else
+{?>
+<img src="plugin/user_images/<?php echo $user_image;?>" class="img-circle" style="height:50px; width:50px;">
+<?php
+}
+?>
+										
 										<h3 class="name"><?php
 										
 										echo $buyer_name;
 										
 										?></h3>
-										<span class="online-status status-available">Available</span>
 									</div>
-									<div class="profile-stat">
-										<div class="row">
-											<div class="col-md-4 stat-item">
-												45 <span>Projects</span>
-											</div>
-											<div class="col-md-4 stat-item">
-												15 <span>Awards</span>
-											</div>
-											<div class="col-md-4 stat-item">
-												2174 <span>Points</span>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 								<!-- END PROFILE HEADER -->
 								<!-- PROFILE DETAIL -->
@@ -105,193 +110,255 @@ and orders.order_id='".mysqli_real_escape_string($conn,$_GET["order_id"])."'
 									<div class="profile-info">
 										<h4 class="heading">Basic Info</h4>
 										<ul class="list-unstyled list-justify">
-											<li>Birthdate <span>24 Aug, 2016</span></li>
-											<li>Mobile <span>(124) 823409234</span></li>
-											<li>Email <span>samuel@mydomain.com</span></li>
-											<li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>
-										</ul>
+										
+											<li>Mobile <span><?php echo $buyer_phone;?></span></li>
+											<li>Email <span><?php echo $buyer_email;?></span></li>
+													</ul>
 									</div>
-									<div class="profile-info">
-										<h4 class="heading">Social</h4>
-										<ul class="list-inline social-icons">
-											<li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#" class="google-plus-bg"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="#" class="github-bg"><i class="fa fa-github"></i></a></li>
-										</ul>
-									</div>
-									<div class="profile-info">
-										<h4 class="heading">About</h4>
-										<p>Interactively fashion excellent information after distinctive outsourcing.</p>
-									</div>
-									<div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
+									
+									
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
 							<!-- RIGHT COLUMN -->
 							<div class="profile-right">
-								<h4 class="heading">Samuel's Awards</h4>
+								<h4 class="heading">Order Detail</h4>
 								<!-- AWARDS -->
-								<div class="awards">
-									<div class="row">
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-sun award-icon"></span>
-												</div>
-												<span>Most Bright Idea</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-clock award-icon"></span>
-												</div>
-												<span>Most On-Time</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-magic-wand award-icon"></span>
-												</div>
-												<span>Problem Solver</span>
-											</div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="award-item">
-												<div class="hexagon">
-													<span class="lnr lnr-heart award-icon"></span>
-												</div>
-												<span>Most Loved</span>
-											</div>
-										</div>
-									</div>
-									<div class="text-center"><a href="#" class="btn btn-default">See all awards</a></div>
-								</div>
-								<!-- END AWARDS -->
-								<!-- TABBED CONTENT -->
-								<div class="custom-tabs-line tabs-line-bottom left-aligned">
-									<ul class="nav" role="tablist">
-										<li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Recent Activity</a></li>
-										<li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Projects <span class="badge">7</span></a></li>
-									</ul>
-								</div>
-								<div class="tab-content">
-									<div class="tab-pane fade in active" id="tab-bottom-left1">
-										<ul class="list-unstyled activity-timeline">
-											<li>
-												<i class="fa fa-comment activity-icon"></i>
-												<p>Commented on post <a href="#">Prototyping</a> <span class="timestamp">2 minutes ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-cloud-upload activity-icon"></i>
-												<p>Uploaded new file <a href="#">Proposal.docx</a> to project <a href="#">New Year Campaign</a> <span class="timestamp">7 hours ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-plus activity-icon"></i>
-												<p>Added <a href="#">Martin</a> and <a href="#">3 others colleagues</a> to project repository <span class="timestamp">Yesterday</span></p>
-											</li>
-											<li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
-											</li>
-										</ul>
-										<div class="margin-top-30 text-center"><a href="#" class="btn btn-default">See all activity</a></div>
-									</div>
-									<div class="tab-pane fade" id="tab-bottom-left2">
-										<div class="table-responsive">
-											<table class="table project-table">
-												<thead>
-													<tr>
-														<th>Title</th>
-														<th>Progress</th>
-														<th>Leader</th>
-														<th>Status</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td><a href="#">Spot Media</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-																	<span>60% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a href="#">Michael</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">E-Commerce Site</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-																	<span>33% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a href="#">Antonius</a></td>
-														<td><span class="label label-warning">PENDING</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Project 123GO</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
-																	<span>68% Complete</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a href="#">Antonius</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Wordpress Theme</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
-																	<span>75%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a href="#">Michael</a></td>
-														<td><span class="label label-success">ACTIVE</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Project 123GO</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-																	<span>100%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle" /> <a href="#">Antonius</a></td>
-														<td><span class="label label-default">CLOSED</span></td>
-													</tr>
-													<tr>
-														<td><a href="#">Redesign Landing Page</a></td>
-														<td>
-															<div class="progress">
-																<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-																	<span>100%</span>
-																</div>
-															</div>
-														</td>
-														<td><img src="assets/img/user5.png" alt="Avatar" class="avatar img-circle" /> <a href="#">Jason</a></td>
-														<td><span class="label label-default">CLOSED</span></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<!-- END TABBED CONTENT -->
-							</div>
-							<!-- END RIGHT COLUMN -->
+								<?php
+			
+			$get_billing_information=mysqli_query($conn,"select * from billing_address where
+			
+			unique_id='".$order_random_id."'
+			")or die(mysqli_query($conn));
+			
+			$count=mysqli_num_rows($get_billing_information);
+			if($count >0){
+				if($fetch_billing=mysqli_fetch_array($get_billing_information)){
+				$first_name=$fetch_billing["first_name"];
+$last_name=$fetch_billing["last_name"];
+$company_name=$fetch_billing["company_name"];
+$country=$fetch_billing["country"];
+$address=$fetch_billing["address"];
+
+$city=$fetch_billing["city"];
+$state=$fetch_billing["state"];
+$zip=$fetch_billing["postal_code"];
+$phone=$fetch_billing["phone"];
+$email=$fetch_billing["email"];	
+					
+			?>
+			
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <strong><?php echo $company_name;?></strong>
+                        </div>
+                        <div>Full Name:<?php echo $first_name.$last_name;?></div>
+                        <div>Address:<?php echo $address;?></div>
+                        <div>Email: <?php echo $email;?></div>
+                        <div>Phone: <?php echo $phone;?></div>
+                    </div>
+                 
+                    <div class="col-sm-6">
+                      
+                        
+                        <div>Country: <?php echo $country;?></div>
+						<div>City: <?php echo $city;?></div>
+                        <div>State: <?php echo $state;?></div>
+                      
+                        
+                    </div>
+                </div>
+
+                <div class="table-responsive-sm">
+				
+				<?php
+				
+				
+				$get_order_info=mysqli_query($conn,"SELECT * from products inner join orders on 
+				products.pro_id=orders.product_id where products.vendor_id='".$_SESSION['vendor_id']."'
+				
+				and orders.unique_id='".$order_random_id."'
+				")or die(mysqli_error($conn));
+				
+				$count=mysqli_num_rows($get_order_info);
+				if($count > 0){
+					
+				?>
+				
+				<div class="row">
+				<div class="col-sm-12">
+				<div class="table table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Pro Id</th>
+                                <th>Pro Name</th>
+                                
+                                <th >Unit Cost</th>
+                                <th >Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+						   <tbody>
+						<?php
+							$total=0;
+							if($fetch_cart_product=mysqli_fetch_array($get_order_info)){
+								
+								
+								$product_id=$fetch_cart_product["pro_id"];
+								$product_name=$fetch_cart_product["pro_name"];
+								$product_price=$fetch_cart_product["pro_price"];
+								$product_qty=$fetch_cart_product["order_qty"];
+								
+								
+								
+							
+							
+							?>
+                     
+                            <tr>
+                                <td><?php echo $product_id;?></td>
+                                <td><?php echo $product_name;?></td>
+                                
+
+                                <td >
+								
+								<?php 
+
+$set=mysqli_query($conn,"SELECT * FROM set_currency
+") or die(mysqli_error($conn));//set currency query 
+$count_currencies=mysqli_num_rows($set);//count of categories 
+if($count_currencies > 0){//if count  greater than 0 
+
+	
+	while($fetch=mysqli_fetch_array($set)){
+	$currency_id=$fetch["currency_id"];//cat id 
+	echo $currency_name=$fetch["currecy_sign"];//cat name 
+	
+	}
+}
+?>&nbsp;
+								<?php echo $product_price;?></td>
+                                <td >
+								
+									
+								
+								<?php echo $product_qty;?></td>
+                                <td ><?php 
+
+$set=mysqli_query($conn,"SELECT * FROM set_currency
+") or die(mysqli_error($conn));//set currency query 
+$count_currencies=mysqli_num_rows($set);//count of categories 
+if($count_currencies > 0){//if count  greater than 0 
+
+	
+	while($fetch=mysqli_fetch_array($set)){
+	$currency_id=$fetch["currency_id"];//cat id 
+	echo $currency_name=$fetch["currecy_sign"];//cat name 
+	
+	}
+}
+?> &nbsp;<?php echo $product_price*$product_qty;
+$total+=$product_price*$product_qty;
+								?></td>
+                            </tr>
+                           
+                            <?php 
+							}
+							
+							?>
+                            
+                        </tbody>
+                    </table>
+					</div>
+					</div>
+                </div>
+                <div class="row">
+                    
+
+                    <div class="col-lg-12 col-sm-12 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Subtotal</strong>
+                                    </td>
+                                    <td><?php 
+
+$set=mysqli_query($conn,"SELECT * FROM set_currency
+") or die(mysqli_error($conn));//set currency query 
+$count_currencies=mysqli_num_rows($set);//count of categories 
+if($count_currencies > 0){//if count  greater than 0 
+
+	
+	while($fetch=mysqli_fetch_array($set)){
+	$currency_id=$fetch["currency_id"];//cat id 
+	echo $currency_name=$fetch["currecy_sign"];//cat name 
+	
+	}
+}
+?>&nbsp;<?php echo $total;?></td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <strong>Shipping Charges</strong>
+                                    </td>
+                                    <td ><?php
+												
+								$delivery_status=mysqli_query($conn,"select * from  delivery_setting limit 0,1") or 
+								die(mysqli_error($conn));//this is shipping query price				
+												
+								$count=mysqli_num_rows($delivery_status);				
+								if($count > 0 ){
+								if($fetch=mysqli_fetch_array($delivery_status)){
+									
+								echo $shipping_price=$fetch["shipping_amount"];	
+									
+									
+								}	
+									
+								}				
+												?></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td>
+                                        <strong><?php 
+
+$set=mysqli_query($conn,"SELECT * FROM set_currency
+") or die(mysqli_error($conn));//set currency query 
+$count_currencies=mysqli_num_rows($set);//count of categories 
+if($count_currencies > 0){//if count  greater than 0 
+
+	
+	while($fetch=mysqli_fetch_array($set)){
+	$currency_id=$fetch["currency_id"];//cat id 
+	echo $currency_name=$fetch["currecy_sign"];//cat name 
+	
+	}
+}
+?><?php echo $shipping_price+$total;?></strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+				<?php 
+				
+				}//end of if order
+				}//end of fetch if 
+			} //end of count if 
+	?>
 					<?php
 					}//end of while loop
 					}//end of count if 

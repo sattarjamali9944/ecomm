@@ -2,10 +2,12 @@
    session_start();
    error_reporting(0);
    require("include/conn.php");//database connection file 
-   if(isset($_SESSION["random_id"])){//isset random number 
+   if(isset($_SESSION["guest_id"])){//isset random number
+    $_SESSION["guest_id"];   
    }//isset random id 
    else{//else random id 
    $rand=mt_rand(0,123456789);
+  $_SESSION["guest_id"]=$rand;
    }
    
    
@@ -493,13 +495,11 @@
                                           <a href="javascript:void(0);" id="add-wishlist<?php echo $product_id;?>" 
                                              class="btn-product-icon btn-wishlist" title="Add to wishlist">
                                           <span>add to wishlist</span></a>
-                                          <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                          <a href="#" class="btn-product-icon btn-compare" title="Compare">
-                                          <span>Compare</span></a>
+                                        
                                        </div>
                                        <!-- End .product-action-vertical -->
                                        <div class="product-action">
-                                          <div id="cart"></div>
+                                          
                                           <script>
                                              $(document).ready(function(){
                                              
@@ -627,7 +627,7 @@
                                  }'>
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-3.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -647,7 +647,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Can 2-Seater Sofa frame charcoal</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Can 2-Seater Sofa frame charcoal</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $3,050.00
@@ -673,7 +673,7 @@
                                  <!-- End .product -->
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-4.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -693,7 +693,7 @@
                                           <a href="#">Clothes</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Tan suede biker jacket</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Tan suede biker jacket</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $240.00
@@ -715,7 +715,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-1.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -735,7 +735,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Butler Stool Ladder</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Butler Stool Ladder</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$251.99</span>
@@ -758,7 +758,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-2.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div>
@@ -780,7 +780,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Bose - SoundSport wireless headphones</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Bose - SoundSport wireless headphones</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$179.99</span>
@@ -809,7 +809,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -829,7 +829,7 @@
                                           <a href="#">Laptops</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">MacBook Pro 13" Display, i5</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,199.99
@@ -851,7 +851,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-5.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -871,7 +871,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,699.99
@@ -927,7 +927,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -947,7 +947,7 @@
                                           <a href="#">Laptops</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">MacBook Pro 13" Display, i5</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,199.99
@@ -969,7 +969,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-2.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div>
@@ -991,7 +991,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Bose - SoundSport wireless headphones</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Bose - SoundSport wireless headphones</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$179.99</span>
@@ -1019,7 +1019,7 @@
                                  <!-- End .product -->
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-3.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1039,7 +1039,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Can 2-Seater Sofa frame charcoal</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Can 2-Seater Sofa frame charcoal</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $3,050.00
@@ -1066,7 +1066,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-1.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1086,7 +1086,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Butler Stool Ladder</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Butler Stool Ladder</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$251.99</span>
@@ -1109,7 +1109,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-5.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1129,7 +1129,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,699.99
@@ -1150,7 +1150,7 @@
                                  <!-- End .product -->
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-4.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1170,7 +1170,7 @@
                                           <a href="#">Clothes</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Tan suede biker jacket</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Tan suede biker jacket</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $240.00
@@ -1226,7 +1226,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-1.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1246,7 +1246,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Butler Stool Ladder</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Butler Stool Ladder</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$251.99</span>
@@ -1269,7 +1269,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-5.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1289,7 +1289,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,699.99
@@ -1311,7 +1311,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1331,7 +1331,7 @@
                                           <a href="#">Laptops</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">MacBook Pro 13" Display, i5</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,199.99
@@ -1353,7 +1353,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-2.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div>
@@ -1375,7 +1375,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Bose - SoundSport wireless headphones</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Bose - SoundSport wireless headphones</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$179.99</span>
@@ -1403,7 +1403,7 @@
                                  <!-- End .product -->
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-3.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1423,7 +1423,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Can 2-Seater Sofa frame charcoal</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Can 2-Seater Sofa frame charcoal</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $3,050.00
@@ -1483,7 +1483,7 @@
                                  }'>
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-4.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1503,7 +1503,7 @@
                                           <a href="#">Clothes</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Tan suede biker jacket</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Tan suede biker jacket</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $240.00
@@ -1524,7 +1524,7 @@
                                  <!-- End .product -->
                                  <div class="product text-center">
                                     <figure class="product-media">
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-3.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1544,7 +1544,7 @@
                                           <a href="#">Furniture</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Can 2-Seater Sofa frame charcoal</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Can 2-Seater Sofa frame charcoal</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $3,050.00
@@ -1571,7 +1571,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-sale">Sale</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-2.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-countdown" data-until="+55h" data-relative="true" data-labels-short="true"></div>
@@ -1593,7 +1593,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Bose - SoundSport wireless headphones</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Bose - SoundSport wireless headphones</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           <span class="new-price">$179.99</span>
@@ -1622,7 +1622,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-5.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1642,7 +1642,7 @@
                                           <a href="#">Electronics</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Sony - Class LED 2160p Smart <br>4K Ultra HD</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,699.99
@@ -1664,7 +1664,7 @@
                                  <div class="product text-center">
                                     <figure class="product-media">
                                        <span class="product-label label-top">Top</span>
-                                       <a href="product-extended.html">
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                        <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
                                        </a>
                                        <div class="product-action-vertical">
@@ -1684,7 +1684,7 @@
                                           <a href="#">Laptops</a>
                                        </div>
                                        <!-- End .product-cat -->
-                                       <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
+                                       <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">MacBook Pro 13" Display, i5</a></h3>
                                        <!-- End .product-title -->
                                        <div class="product-price">
                                           $1,199.99
@@ -1781,33 +1781,166 @@
                               }
                               }
                               }'>
+							  
+							  <?php
+                                    require("include/conn.php");//connection file =
+                                    
+                                    
+                                    
+                                    $query=mysqli_query($conn,"SELECT * FROM products 
+                                    INNER JOIN main_catogories ON 
+                                    main_catogories.cat_id = products.cat_id INNER JOIN 
+                                    sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
+                                    INNER JOIN third_level_category ON 
+                                    products.third_cat_id = third_level_category.third_cat_id
+									
+									where products.sale > 0 and products.sale<=20
+									
+									") or
+                                    die(mysqli_error($conn));
+                                    
+                                    $count=mysqli_num_rows($query);
+                                    if($count > 0){	
+                                    while($fetch=mysqli_fetch_array($query)){
+                                    $product_id=$fetch["pro_id"];
+                                    $cat_name=$fetch["cat_name"];
+                                    $product_random_id=$fetch["product_random_id"];
+                                    $product_name=$fetch["pro_name"];
+                                    $product_des=$fetch["pro_des"];
+                                    $product_price=$fetch["pro_price"];
+                                    $product_image=$fetch["pro_image"];
+                                    $sale=$fetch["sale"];
+                                    ?> 
+							  
                               <div class="product text-center">
                                  <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
+                                    <span class="product-label label-top">
+									Sale <?php echo $sale."%";?>
+									
+									</span>
+                                    <?php
+                                          $get_images=mysqli_query($conn,"select * from multiples_images
+                                          where product_random_id='".$product_random_id."' limit 1
+                                          
+                                          ") or 
+                                          die(mysqli_error($conn));
+                                          $count_images=mysqli_num_rows($get_images);
+                                          if($count_images){
+                                          while($fetch_images=mysqli_fetch_array($get_images)){
+                                          	$product_image=$fetch_images["image_name"];
+                                          ?>
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+                                       <img src="admin/plugin/product_images/<?php echo $product_image;?>"
+                                          alt="<?php echo $product_name;?>" style="height:196px; width:196px;" class="product-image">
+                                       </a>
+                                       <?php
+                                          }//end of while loop of count images
+                                          }//end of if statement
+                                          
+                                          ?>
+                                   <div class="product-action-vertical">
+                                          <script>
+                                             $(document).ready(function(){
+                                             $("#add-wishlist-twenty<?php echo $product_id;?>").click(function(){
+                                             var wish_id=$("#wish_id<?php echo $product_id;?>").val();
+                                                $.ajax({
+                                                               type: "POST",
+                                                               url: "cart_ajax_add_wish.php",
+                                                               data: {wish_id:wish_id},
+                                                               success: function(data) {
+                                                               $("#wish").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                             	
+                                             });
+                                                               });						
+                                             	
+                                             	
+                                          </script>
+                                          <input type="hidden" 
+										  id="wish_id<?php echo $product_id;?>" 
+										  value="<?php echo $product_id;?>" >			
+                                          <a href="javascript:void(0);" 
+										  id="add-wishlist-twenty<?php echo $product_id;?>" 
+                                             class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                          <span>add to wishlist</span></a>
+                                        
+                                       </div>
+                                       <!-- End .product-action-vertical -->
+                                       <div class="product-action">
+                                          
+                                          <script>
+                                             $(document).ready(function(){
+                                             
+                                                               $("#add-cart-twenty<?php echo $product_id;?>").click(function(){	
+                                                                  var product_id=$("#product_id<?php echo $product_id;?>").val();
+                                                   var quantity=$("#quantity<?php echo $product_id;?>").val();
+                                                       $.ajax({
+                                                   type: "POST",
+                                                   url: "cart_ajax_add_cart.php",
+                                                   data: {product_id:product_id,quantity:quantity},
+                                               
+                                                   success: function(data) {
+                                                  
+                                             $("#cart").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                                          						 
+                                             });
+                                                 
+                                             });
+                                          </script>		
+                                          <input type="hidden" id="product_id<?php echo $product_id;?>" 
+                                             value="<?php echo $product_id;?>" >
+                                          <input type="hidden" id="quantity<?php echo $product_id;?>" value="1">
+                                          <button id="add-cart-twenty<?php echo $product_id;?>" href="javascript:void(0);" 
+                                             class="btn-product btn-cart" 
+                                             title="Add to cart">
+                                          <span >add to cart</span></button>
+                                       </div>
+                                       <!-- End .product-action -->
+
                                     <!-- End .product-action -->
                                  </figure>
                                  <!-- End .product-media -->
                                  <div class="product-body">
                                     <div class="product-cat">
-                                       <a href="#">Laptops</a>
+                                       <a href="#"><?php echo $cat_name;?></a>
                                     </div>
                                     <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
+                                    <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+									<?php echo $product_name;?></a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                       $1,199.99
+                                <?php 
+                                             $set=mysqli_query($conn,"SELECT * FROM set_currency
+                                             ") or die(mysqli_error($conn));//set currency query 
+                                             $count_currencies=mysqli_num_rows($set);//count of curreny row 
+                                             if($count_currencies > 0){//if count  greater than 0 
+                                             
+                                             	
+                                             	while($fetch=mysqli_fetch_array($set)){
+                                             	$currency_id=$fetch["currency_id"];//currency_id  
+                                             	echo $currency_name=$fetch["currecy_sign"];//currency sign 
+                                             	
+                                             	}
+                                             }
+                                             ?>
+                                          <?php
+                                             echo $product_price;
+                                             ?>
                                     </div>
                                     <!-- End .product-price -->
                                     <div class="ratings-container">
@@ -1823,187 +1956,16 @@
                                  <!-- End .product-body -->
                               </div>
                               <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-7.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Audio</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Bose - SoundLink Bluetooth Speaker</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $79.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 60%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 6 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-8.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Tablets</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Apple - 11 Inch iPad Pro <br>with Wi-Fi 256GB </a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $899.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 60%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 6 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-9.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Cell Phone</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Google - Pixel 3 XL 128GB</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       <span class="new-price">$350.00</span>
-                                       <span class="old-price">Was $410.00</span>
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 10 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Laptops</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">MacBook Pro 13" Display, i5</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $1,199.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 100%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                           </div>
+							  
+							  <?php
+									}
+									
+									}
+							  
+							  ?>
+							  
+							  
+                                                         </div>
                            <!-- End .owl-carousel -->
                         </div>
                         <!-- End .col-xl-9 -->
@@ -2079,79 +2041,165 @@
                               }
                               }
                               }'>
+                             <?php
+                                    require("include/conn.php");//connection file =
+                                    
+                                    
+                                    
+                                    $query=mysqli_query($conn,"SELECT * FROM products 
+                                    INNER JOIN main_catogories ON 
+                                    main_catogories.cat_id = products.cat_id INNER JOIN 
+                                    sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
+                                    INNER JOIN third_level_category ON 
+                                    products.third_cat_id = third_level_category.third_cat_id
+									
+									where products.sale > 20 and products.sale<=30
+									
+									") or
+                                    die(mysqli_error($conn));
+                                    
+                                    $count=mysqli_num_rows($query);
+                                    if($count > 0){	
+                                    while($fetch=mysqli_fetch_array($query)){
+                                    $product_id=$fetch["pro_id"];
+                                    $cat_name=$fetch["cat_name"];
+                                    $product_random_id=$fetch["product_random_id"];
+                                    $product_name=$fetch["pro_name"];
+                                    $product_des=$fetch["pro_des"];
+                                    $product_price=$fetch["pro_price"];
+                                    $product_image=$fetch["pro_image"];
+                                    $sale=$fetch["sale"];
+                                    ?> 
+							  
                               <div class="product text-center">
                                  <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-10.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Tables</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Block Side Table/Trolley</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $299.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
+                                    <span class="product-label label-top">
+									Sale <?php echo $sale."%";?>
+									
+									</span>
+                                    <?php
+                                          $get_images=mysqli_query($conn,"select * from multiples_images
+                                          where product_random_id='".$product_random_id."' limit 1
+                                          
+                                          ") or 
+                                          die(mysqli_error($conn));
+                                          $count_images=mysqli_num_rows($get_images);
+                                          if($count_images){
+                                          while($fetch_images=mysqli_fetch_array($get_images)){
+                                          	$product_image=$fetch_images["image_name"];
+                                          ?>
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+                                       <img src="admin/plugin/product_images/<?php echo $product_image;?>"
+                                          alt="<?php echo $product_name;?>" style="height:196px; width:196px;" class="product-image">
+                                       </a>
+                                       <?php
+                                          }//end of while loop of count images
+                                          }//end of if statement
+                                          
+                                          ?>
+                                   <div class="product-action-vertical">
+                                          <script>
+                                             $(document).ready(function(){
+                                             $("#add-wishlist-thirty<?php echo $product_id;?>").click(function(){
+                                             var wish_id=$("#wish_id<?php echo $product_id;?>").val();
+                                                $.ajax({
+                                                               type: "POST",
+                                                               url: "cart_ajax_add_wish.php",
+                                                               data: {wish_id:wish_id},
+                                                               success: function(data) {
+                                                               $("#wish").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                             	
+                                             });
+                                                               });						
+                                             	
+                                             	
+                                          </script>
+                                          <input type="hidden" 
+										  id="wish_id<?php echo $product_id;?>" 
+										  value="<?php echo $product_id;?>" >			
+                                          <a href="javascript:void(0);" 
+										  id="add-wishlist-thirty<?php echo $product_id;?>" 
+                                             class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                          <span>add to wishlist</span></a>
+                                        
                                        </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 12 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-11.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
+                                       <!-- End .product-action-vertical -->
+                                       <div class="product-action">
+                                          
+                                          <script>
+                                             $(document).ready(function(){
+                                             
+                                                               $("#add-cart-thirty<?php echo $product_id;?>").click(function(){	
+                                                                  var product_id=$("#product_id<?php echo $product_id;?>").val();
+                                                   var quantity=$("#quantity<?php echo $product_id;?>").val();
+                                                       $.ajax({
+                                                   type: "POST",
+                                                   url: "cart_ajax_add_cart.php",
+                                                   data: {product_id:product_id,quantity:quantity},
+                                               
+                                                   success: function(data) {
+                                                  
+                                             $("#cart").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                                          						 
+                                             });
+                                                 
+                                             });
+                                          </script>		
+                                          <input type="hidden" id="product_id<?php echo $product_id;?>" 
+                                             value="<?php echo $product_id;?>" >
+                                          <input type="hidden" id="quantity<?php echo $product_id;?>" value="1">
+                                          <button id="add-cart-thirty<?php echo $product_id;?>" href="javascript:void(0);" 
+                                             class="btn-product btn-cart" 
+                                             title="Add to cart">
+                                          <span >add to cart</span></button>
+                                       </div>
+                                       <!-- End .product-action -->
+
                                     <!-- End .product-action -->
                                  </figure>
                                  <!-- End .product-media -->
                                  <div class="product-body">
                                     <div class="product-cat">
-                                       <a href="#">Sofas</a>
+                                       <a href="#"><?php echo $cat_name;?></a>
                                     </div>
                                     <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Roots Sofa Bed</a></h3>
+                                    <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+									<?php echo $product_name;?></a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                       $1,199.99
+                                <?php 
+                                             $set=mysqli_query($conn,"SELECT * FROM set_currency
+                                             ") or die(mysqli_error($conn));//set currency query 
+                                             $count_currencies=mysqli_num_rows($set);//count of curreny row 
+                                             if($count_currencies > 0){//if count  greater than 0 
+                                             
+                                             	
+                                             	while($fetch=mysqli_fetch_array($set)){
+                                             	$currency_id=$fetch["currency_id"];//currency_id  
+                                             	echo $currency_name=$fetch["currecy_sign"];//currency sign 
+                                             	
+                                             	}
+                                             }
+                                             ?>
+                                          <?php
+                                             echo $product_price;
+                                             ?>
                                     </div>
                                     <!-- End .product-price -->
                                     <div class="ratings-container">
@@ -2167,147 +2215,14 @@
                                  <!-- End .product-body -->
                               </div>
                               <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-12.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Lighting</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Carronade Large <br>Suspension Lamp</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       <span class="new-price">$892.99</span>
-                                       <span class="old-price">Was $931.00</span>
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 60%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 6 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #f7f6f5;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #825a45;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-13.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Chairs</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Wingback Chair</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $210.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #999999;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #cc9999;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-10.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Tables</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Block Side Table/Trolley</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $299.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 12 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
+							  
+							  <?php
+									}
+									
+									}
+							  
+							  ?> <!-- End .product -->
+                              
                            </div>
                            <!-- End .owl-carousel -->
                         </div>
@@ -2423,74 +2338,165 @@
                               }
                               }
                               }'>
+                              <?php
+                                    require("include/conn.php");//connection file =
+                                    
+                                    
+                                    
+                                    $query=mysqli_query($conn,"SELECT * FROM products 
+                                    INNER JOIN main_catogories ON 
+                                    main_catogories.cat_id = products.cat_id INNER JOIN 
+                                    sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
+                                    INNER JOIN third_level_category ON 
+                                    products.third_cat_id = third_level_category.third_cat_id
+									
+									where  products.sale>=70
+									
+									") or
+                                    die(mysqli_error($conn));
+                                    
+                                    $count=mysqli_num_rows($query);
+                                    if($count > 0){	
+                                    while($fetch=mysqli_fetch_array($query)){
+                                    $product_id=$fetch["pro_id"];
+                                    $cat_name=$fetch["cat_name"];
+                                    $product_random_id=$fetch["product_random_id"];
+                                    $product_name=$fetch["pro_name"];
+                                    $product_des=$fetch["pro_des"];
+                                    $product_price=$fetch["pro_price"];
+                                    $product_image=$fetch["pro_image"];
+                                    $sale=$fetch["sale"];
+                                    ?> 
+							  
                               <div class="product text-center">
                                  <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-14.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Shoes</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Beige faux suede runner  trainers</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $64.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
+                                    <span class="product-label label-top">
+									Sale <?php echo $sale."%";?>
+									
+									</span>
+                                    <?php
+                                          $get_images=mysqli_query($conn,"select * from multiples_images
+                                          where product_random_id='".$product_random_id."' limit 1
+                                          
+                                          ") or 
+                                          die(mysqli_error($conn));
+                                          $count_images=mysqli_num_rows($get_images);
+                                          if($count_images){
+                                          while($fetch_images=mysqli_fetch_array($get_images)){
+                                          	$product_image=$fetch_images["image_name"];
+                                          ?>
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+                                       <img src="admin/plugin/product_images/<?php echo $product_image;?>"
+                                          alt="<?php echo $product_name;?>" style="height:196px; width:196px;" class="product-image">
+                                       </a>
+                                       <?php
+                                          }//end of while loop of count images
+                                          }//end of if statement
+                                          
+                                          ?>
+                                   <div class="product-action-vertical">
+                                          <script>
+                                             $(document).ready(function(){
+                                             $("#add-wishlist-thirty<?php echo $product_id;?>").click(function(){
+                                             var wish_id=$("#wish_id<?php echo $product_id;?>").val();
+                                                $.ajax({
+                                                               type: "POST",
+                                                               url: "cart_ajax_add_wish.php",
+                                                               data: {wish_id:wish_id},
+                                                               success: function(data) {
+                                                               $("#wish").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                             	
+                                             });
+                                                               });						
+                                             	
+                                             	
+                                          </script>
+                                          <input type="hidden" 
+										  id="wish_id<?php echo $product_id;?>" 
+										  value="<?php echo $product_id;?>" >			
+                                          <a href="javascript:void(0);" 
+										  id="add-wishlist-thirty<?php echo $product_id;?>" 
+                                             class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                          <span>add to wishlist</span></a>
+                                        
                                        </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 12 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-15.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
+                                       <!-- End .product-action-vertical -->
+                                       <div class="product-action">
+                                          
+                                          <script>
+                                             $(document).ready(function(){
+                                             
+                                                               $("#add-cart-thirty<?php echo $product_id;?>").click(function(){	
+                                                                  var product_id=$("#product_id<?php echo $product_id;?>").val();
+                                                   var quantity=$("#quantity<?php echo $product_id;?>").val();
+                                                       $.ajax({
+                                                   type: "POST",
+                                                   url: "cart_ajax_add_cart.php",
+                                                   data: {product_id:product_id,quantity:quantity},
+                                               
+                                                   success: function(data) {
+                                                  
+                                             $("#cart").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                                          						 
+                                             });
+                                                 
+                                             });
+                                          </script>		
+                                          <input type="hidden" id="product_id<?php echo $product_id;?>" 
+                                             value="<?php echo $product_id;?>" >
+                                          <input type="hidden" id="quantity<?php echo $product_id;?>" value="1">
+                                          <button id="add-cart-thirty<?php echo $product_id;?>" href="javascript:void(0);" 
+                                             class="btn-product btn-cart" 
+                                             title="Add to cart">
+                                          <span >add to cart</span></button>
+                                       </div>
+                                       <!-- End .product-action -->
+
                                     <!-- End .product-action -->
                                  </figure>
                                  <!-- End .product-media -->
                                  <div class="product-body">
                                     <div class="product-cat">
-                                       <a href="#">Accessories</a>
+                                       <a href="#"><?php echo $cat_name;?></a>
                                     </div>
                                     <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Black boucle check scarf</a></h3>
+                                    <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+									<?php echo $product_name;?></a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                       $36.00
+                                <?php 
+                                             $set=mysqli_query($conn,"SELECT * FROM set_currency
+                                             ") or die(mysqli_error($conn));//set currency query 
+                                             $count_currencies=mysqli_num_rows($set);//count of curreny row 
+                                             if($count_currencies > 0){//if count  greater than 0 
+                                             
+                                             	
+                                             	while($fetch=mysqli_fetch_array($set)){
+                                             	$currency_id=$fetch["currency_id"];//currency_id  
+                                             	echo $currency_name=$fetch["currecy_sign"];//currency sign 
+                                             	
+                                             	}
+                                             }
+                                             ?>
+                                          <?php
+                                             echo $product_price;
+                                             ?>
                                     </div>
                                     <!-- End .product-price -->
                                     <div class="ratings-container">
@@ -2506,134 +2512,13 @@
                                  <!-- End .product-body -->
                               </div>
                               <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-16.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">T-Shirts</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Carronade Large <br>Suspension Lamp</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $56.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 60%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 6 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-17.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Bags</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Triple compartment cross body bag</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $64.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 40%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 4 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-14.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Shoes</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Beige faux suede runner  trainers</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $64.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 12 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
+							  
+							  <?php
+									}
+									
+									}
+							  
+							  ?> <!-- End .product -->
                            </div>
                            <!-- End .owl-carousel -->
                         </div>
@@ -2710,221 +2595,188 @@
                               }
                               }
                               }'>
+                             <?php
+                                    require("include/conn.php");//connection file =
+                                    
+                                    
+                                    
+                                    $query=mysqli_query($conn,"SELECT * FROM products 
+                                    INNER JOIN main_catogories ON 
+                                    main_catogories.cat_id = products.cat_id INNER JOIN 
+                                    sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
+                                    INNER JOIN third_level_category ON 
+                                    products.third_cat_id = third_level_category.third_cat_id
+									
+									where products.sale > 20 and products.sale<=30
+									
+									") or
+                                    die(mysqli_error($conn));
+                                    
+                                    $count=mysqli_num_rows($query);
+                                    if($count > 0){	
+                                    while($fetch=mysqli_fetch_array($query)){
+                                    $product_id=$fetch["pro_id"];
+                                    $cat_name=$fetch["cat_name"];
+                                    $product_random_id=$fetch["product_random_id"];
+                                    $product_name=$fetch["pro_name"];
+                                    $product_des=$fetch["pro_des"];
+                                    $product_price=$fetch["pro_price"];
+                                    $product_image=$fetch["pro_image"];
+                                    $sale=$fetch["sale"];
+                                    ?> 
+							  
                               <div class="product text-center">
                                  <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
+                                    <span class="product-label label-top">
+									Sale <?php echo $sale."%";?>
+									
+									</span>
+                                    <?php
+                                          $get_images=mysqli_query($conn,"select * from multiples_images
+                                          where product_random_id='".$product_random_id."' limit 1
+                                          
+                                          ") or 
+                                          die(mysqli_error($conn));
+                                          $count_images=mysqli_num_rows($get_images);
+                                          if($count_images){
+                                          while($fetch_images=mysqli_fetch_array($get_images)){
+                                          	$product_image=$fetch_images["image_name"];
+                                          ?>
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+                                       <img src="admin/plugin/product_images/<?php echo $product_image;?>"
+                                          alt="<?php echo $product_name;?>" style="height:196px; width:196px;" class="product-image">
+                                       </a>
+                                       <?php
+                                          }//end of while loop of count images
+                                          }//end of if statement
+                                          
+                                          ?>
+                                   <div class="product-action-vertical">
+                                          <script>
+                                             $(document).ready(function(){
+                                             $("#add-wishlist-thirty-second<?php echo $product_id;?>").click(function(){
+                                             var wish_id=$("#wish_id<?php echo $product_id;?>").val();
+                                                $.ajax({
+                                                               type: "POST",
+                                                               url: "cart_ajax_add_wish.php",
+                                                               data: {wish_id:wish_id},
+                                                               success: function(data) {
+                                                               $("#wish").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                             	
+                                             });
+                                                               });						
+                                             	
+                                             	
+                                          </script>
+                                          <input type="hidden" 
+										  id="wish_id<?php echo $product_id;?>" 
+										  value="<?php echo $product_id;?>" >			
+                                          <a href="javascript:void(0);" 
+										  id="add-wishlist-thirty-second<?php echo $product_id;?>" 
+                                             class="btn-product-icon btn-wishlist" title="Add to wishlist">
+                                          <span>add to wishlist</span></a>
+                                        
+                                       </div>
+                                       <!-- End .product-action-vertical -->
+                                       <div class="product-action">
+                                          
+                                          <script>
+                                             $(document).ready(function(){
+                                             
+                                                               $("#add-cart-thirty-second<?php echo $product_id;?>").click(function(){	
+                                                                  var product_id=$("#product_id<?php echo $product_id;?>").val();
+                                                   var quantity=$("#quantity<?php echo $product_id;?>").val();
+                                                       $.ajax({
+                                                   type: "POST",
+                                                   url: "cart_ajax_add_cart.php",
+                                                   data: {product_id:product_id,quantity:quantity},
+                                               
+                                                   success: function(data) {
+                                                  
+                                             $("#cart").html(data);
+                                                    
+                                             
+                                                   },
+                                                   error: function(err) {
+                                             
+                                                 
+                                                   }
+                                               });
+                                                          						 
+                                             });
+                                                 
+                                             });
+                                          </script>		
+                                          <input type="hidden" id="product_id<?php echo $product_id;?>" 
+                                             value="<?php echo $product_id;?>" >
+                                          <input type="hidden" id="quantity<?php echo $product_id;?>" value="1">
+                                          <button id="add-cart-thirty-second<?php echo $product_id;?>" href="javascript:void(0);" 
+                                             class="btn-product btn-cart" 
+                                             title="Add to cart">
+                                          <span >add to cart</span></button>
+                                       </div>
+                                       <!-- End .product-action -->
+
                                     <!-- End .product-action -->
                                  </figure>
                                  <!-- End .product-media -->
                                  <div class="product-body">
                                     <div class="product-cat">
-                                       <a href="#">Cooking Appliances</a>
+                                       <a href="#"><?php echo $cat_name;?></a>
                                     </div>
                                     <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">KitchenAid Professional  500 Series Stand Mixer</a></h3>
+                                    <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+									<?php echo $product_name;?></a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                       <span class="new-price">$249.99</span>
-                                       <span class="old-price">Was $299.99</span>
+                                <?php 
+                                             $set=mysqli_query($conn,"SELECT * FROM set_currency
+                                             ") or die(mysqli_error($conn));//set currency query 
+                                             $count_currencies=mysqli_num_rows($set);//count of curreny row 
+                                             if($count_currencies > 0){//if count  greater than 0 
+                                             
+                                             	
+                                             	while($fetch=mysqli_fetch_array($set)){
+                                             	$currency_id=$fetch["currency_id"];//currency_id  
+                                             	echo $currency_name=$fetch["currecy_sign"];//currency sign 
+                                             	
+                                             	}
+                                             }
+                                             ?>
+                                          <?php
+                                             echo $product_price;
+                                             ?>
                                     </div>
                                     <!-- End .product-price -->
                                     <div class="ratings-container">
                                        <div class="ratings">
                                           <div class="ratings-val" style="width: 100%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 7 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-19.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Dinnerware</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">MoDRN Industrial 7 Piece</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $40.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 60%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 3 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-20.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Cookware</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">Cuisinart French Classic 3 Piece</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $44.99
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 0%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 0 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-21.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Cooking Appliances</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">KitchenAid - KSB1570WH Classic 5-Speed Blender</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       $75.00
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 80%;"></div>
                                           <!-- End .ratings-val -->
                                        </div>
                                        <!-- End .ratings -->
                                        <span class="ratings-text">( 4 Reviews )</span>
                                     </div>
                                     <!-- End .rating-container -->
-                                    <div class="product-nav product-nav-dots">
-                                       <a href="#" class="active" style="background: #f1f1f1;"><span class="sr-only">Color name</span></a>
-                                       <a href="#" style="background: #c00b1b;"><span class="sr-only">Color name</span></a>
-                                    </div>
-                                    <!-- End .product-nav -->
                                  </div>
                                  <!-- End .product-body -->
                               </div>
                               <!-- End .product -->
-                              <div class="product text-center">
-                                 <figure class="product-media">
-                                    <span class="product-label label-sale">Sale</span>
-                                    <a href="product-extended.html">
-                                    <img src="assets/images/demos/demo-14/products/product-18.jpg" alt="Product image" class="product-image">
-                                    </a>
-                                    <div class="product-action-vertical">
-                                       <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
-                                       <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                       <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                    </div>
-                                    <!-- End .product-action-vertical -->
-                                    <div class="product-action">
-                                       <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    </div>
-                                    <!-- End .product-action -->
-                                 </figure>
-                                 <!-- End .product-media -->
-                                 <div class="product-body">
-                                    <div class="product-cat">
-                                       <a href="#">Cooking Appliances</a>
-                                    </div>
-                                    <!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product-extended.html">KitchenAid Professional  500 Series Stand Mixer</a></h3>
-                                    <!-- End .product-title -->
-                                    <div class="product-price">
-                                       <span class="new-price">$249.99</span>
-                                       <span class="old-price">Was $299.99</span>
-                                    </div>
-                                    <!-- End .product-price -->
-                                    <div class="ratings-container">
-                                       <div class="ratings">
-                                          <div class="ratings-val" style="width: 100%;"></div>
-                                          <!-- End .ratings-val -->
-                                       </div>
-                                       <!-- End .ratings -->
-                                       <span class="ratings-text">( 7 Reviews )</span>
-                                    </div>
-                                    <!-- End .rating-container -->
-                                 </div>
-                                 <!-- End .product-body -->
-                              </div>
-                              <!-- End .product -->
+							  
+							  <?php
+									}
+									
+									}
+							  
+							  ?> <!-- End .product --> <!-- End .product -->
+                              
                            </div>
                            <!-- End .owl-carousel -->
                         </div>
@@ -3032,91 +2884,92 @@
                                  <h4 class="widget-title"><span>Bestsellers</span></h4>
                                  <!-- End .widget-title -->
                                  <div class="products">
-                                    <div class="product product-sm">
+<?php
+                                    require("include/conn.php");//connection file =
+                                    
+                                    
+                                    
+                                    $query=mysqli_query($conn,"SELECT * FROM products 
+                                    INNER JOIN main_catogories ON 
+                                    main_catogories.cat_id = products.cat_id INNER JOIN 
+                                    sub_catogory ON products.sub_catid = sub_catogory.sub_cat_id
+                                    INNER JOIN third_level_category ON 
+                                    products.third_cat_id = third_level_category.third_cat_id
+									
+									where products.role='bestseller'
+									
+									") or
+                                    die(mysqli_error($conn));
+                                    
+                                    $count=mysqli_num_rows($query);
+                                    if($count > 0){	
+                                    while($fetch=mysqli_fetch_array($query)){
+                                    $product_id=$fetch["pro_id"];
+                                    $cat_name=$fetch["cat_name"];
+                                    $product_random_id=$fetch["product_random_id"];
+                                    $product_name=$fetch["pro_name"];
+                                    $product_des=$fetch["pro_des"];
+                                    $product_price=$fetch["pro_price"];
+                                    $product_image=$fetch["pro_image"];
+                                    $sale=$fetch["sale"];
+                                    ?>
+								   <div class="product product-sm">
                                        <figure class="product-media">
-                                          <a href="product-extended.html">
-                                          <img src="assets/images/demos/demo-14/products/small/product-1.jpg" alt="Product image" class="product-image">
-                                          </a>
+                                          <?php
+                                          $get_images=mysqli_query($conn,"select * from multiples_images
+                                          where product_random_id='".$product_random_id."' limit 1
+                                          
+                                          ") or 
+                                          die(mysqli_error($conn));
+                                          $count_images=mysqli_num_rows($get_images);
+                                          if($count_images){
+                                          while($fetch_images=mysqli_fetch_array($get_images)){
+                                          	$product_image=$fetch_images["image_name"];
+                                          ?>
+                                       <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+                                       <img src="admin/plugin/product_images/<?php echo $product_image;?>"
+                                          alt="<?php echo $product_name;?>" style="height:70px; width:70px;" class="product-image">
+                                       </a>
+                                       <?php
+                                          }//end of while loop of count images
+                                          }//end of if statement
+                                          
+                                          ?>
                                        </figure>
                                        <div class="product-body">
-                                          <h5 class="product-title"><a href="product-extended.html">Sceptre 50" Class FHD (1080P) LED TV</a></h5>
+                                          <h5 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">
+										  <?php echo $product_name;?>
+										  
+										  </a></h5>
                                           <!-- End .product-title -->
                                           <div class="product-price">
-                                             $199.99
+										   <?php 
+                                             $set=mysqli_query($conn,"SELECT * FROM set_currency
+                                             ") or die(mysqli_error($conn));//set currency query 
+                                             $count_currencies=mysqli_num_rows($set);//count of curreny row 
+                                             if($count_currencies > 0){//if count  greater than 0 
+                                             
+                                             	
+                                             	while($fetch=mysqli_fetch_array($set)){
+                                             	$currency_id=$fetch["currency_id"];//currency_id  
+                                             	echo $currency_name=$fetch["currecy_sign"];//currency sign 
+                                             	
+                                             	}
+                                             }
+                                             ?>
+                                            <?php echo $product_price;?>
                                           </div>
                                           <!-- End .product-price -->
                                        </div>
                                        <!-- End .product-body -->
                                     </div>
+								<?php
+									}//
+									}//
+								
+								?>	
                                     <!-- End .product product-sm -->
-                                    <div class="product product-sm">
-                                       <figure class="product-media">
-                                          <a href="product-extended.html">
-                                          <img src="assets/images/demos/demo-14/products/small/product-2.jpg" alt="Product image" class="product-image">
-                                          </a>
-                                       </figure>
-                                       <div class="product-body">
-                                          <h5 class="product-title"><a href="product-extended.html">Red Cookware Set, 9 Piece</a></h5>
-                                          <!-- End .product-title -->
-                                          <div class="product-price">
-                                             $24.95
-                                          </div>
-                                          <!-- End .product-price -->
-                                       </div>
-                                       <!-- End .product-body -->
-                                    </div>
-                                    <!-- End .product product-sm -->
-                                    <div class="product product-sm">
-                                       <figure class="product-media">
-                                          <a href="product-extended.html">
-                                          <img src="assets/images/demos/demo-14/products/small/product-3.jpg" alt="Product image" class="product-image">
-                                          </a>
-                                       </figure>
-                                       <div class="product-body">
-                                          <h5 class="product-title"><a href="product-extended.html">Epson WorkForce WF-2750 All-in-One Wireless</a></h5>
-                                          <!-- End .product-title -->
-                                          <div class="product-price">
-                                             $49.99
-                                          </div>
-                                          <!-- End .product-price -->
-                                       </div>
-                                       <!-- End .product-body -->
-                                    </div>
-                                    <!-- End .product product-sm -->
-                                    <div class="product product-sm">
-                                       <figure class="product-media">
-                                          <a href="product-extended.html">
-                                          <img src="assets/images/demos/demo-14/products/small/product-4.jpg" alt="Product image" class="product-image">
-                                          </a>
-                                       </figure>
-                                       <div class="product-body">
-                                          <h5 class="product-title"><a href="product-extended.html">Stainless Steel Microwave Oven</a></h5>
-                                          <!-- End .product-title -->
-                                          <div class="product-price">
-                                             $64.84
-                                          </div>
-                                          <!-- End .product-price -->
-                                       </div>
-                                       <!-- End .product-body -->
-                                    </div>
-                                    <!-- End .product product-sm -->
-                                    <div class="product product-sm">
-                                       <figure class="product-media">
-                                          <a href="product-extended.html">
-                                          <img src="assets/images/demos/demo-14/products/small/product-5.jpg" alt="Product image" class="product-image">
-                                          </a>
-                                       </figure>
-                                       <div class="product-body">
-                                          <h5 class="product-title"><a href="product-extended.html">Fatboy Original Beanbag</a></h5>
-                                          <!-- End .product-title -->
-                                          <div class="product-price">
-                                             $49.99
-                                          </div>
-                                          <!-- End .product-price -->
-                                       </div>
-                                       <!-- End .product-body -->
-                                    </div>
-                                    <!-- End .product product-sm -->
+                                   
                                  </div>
                                  <!-- End .products -->
                               </div>
@@ -3132,7 +2985,7 @@
                                        <div class="product text-center">
                                           <figure class="product-media">
                                              <span class="product-label label-sale">Deal of the week</span>
-                                             <a href="product-extended.html">
+                                             <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                              <img src="assets/images/demos/demo-14/products/deals/product-1.jpg" alt="Product image" class="product-image">
                                              </a>
                                              <div class="product-action-vertical">
@@ -3152,7 +3005,7 @@
                                                 <a href="#">Audio</a>
                                              </div>
                                              <!-- End .product-cat -->
-                                             <h3 class="product-title"><a href="product-extended.html">Bose SoundLink Micro speaker</a></h3>
+                                             <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Bose SoundLink Micro speaker</a></h3>
                                              <!-- End .product-title -->
                                              <div class="product-price">
                                                 <span class="new-price">$99.99</span>
@@ -3185,7 +3038,7 @@
                                        <div class="product text-center">
                                           <figure class="product-media">
                                              <span class="product-label label-sale">Deal of the week</span>
-                                             <a href="product-extended.html">
+                                             <a href="product_detail.php?pro_id=<?php echo $product_id;?>">
                                              <img src="assets/images/demos/demo-14/products/deals/product-2.jpg" alt="Product image" class="product-image">
                                              </a>
                                              <div class="product-action-vertical">
@@ -3205,7 +3058,7 @@
                                                 <a href="#">Cameras</a>
                                              </div>
                                              <!-- End .product-cat -->
-                                             <h3 class="product-title"><a href="product-extended.html">GoPro HERO Session Waterproof HD Action Camera</a></h3>
+                                             <h3 class="product-title"><a href="product_detail.php?pro_id=<?php echo $product_id;?>">GoPro HERO Session Waterproof HD Action Camera</a></h3>
                                              <!-- End .product-title -->
                                              <div class="product-price">
                                                 <span class="new-price">$196.99</span>
@@ -3377,7 +3230,8 @@
             </form>
             <ul class="nav nav-pills-mobile" role="tablist">
                <li class="nav-item">
-                  <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+                  <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" 
+				  href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
@@ -3434,11 +3288,11 @@
                            </ul>
                         </li>
                         <li>
-                           <a href="product-extended.html" class="sf-with-ul">Product</a>
+                           <a href="product_detail.php?pro_id=<?php echo $product_id;?>" class="sf-with-ul">Product</a>
                            <ul>
-                              <li><a href="product-extended.html">Default</a></li>
+                              <li><a href="product_detail.php?pro_id=<?php echo $product_id;?>">Default</a></li>
                               <li><a href="product-centered.html">Centered</a></li>
-                              <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
+                              <li><a href="product_detail.php?pro_id=<?php echo $product_id;?>"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
                               <li><a href="product-gallery.html">Gallery</a></li>
                               <li><a href="product-sticky.html">Sticky Info</a></li>
                               <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
@@ -3567,157 +3421,16 @@
       </div>
       <!-- End .mobile-menu-container -->
       <!-- Sign in / Register Modal -->
-      <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-               <div class="modal-body">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true"><i class="icon-close"></i></span>
-                  </button>
-                  <div class="form-box">
-                     <div class="form-tab">
-                        <ul class="nav nav-pills nav-fill" role="tablist">
-                           <li class="nav-item">
-                              <a class="nav-link active" id="signin-tab" data-toggle="tab" 
-                                 href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" id="register-tab" data-toggle="tab" 
-                                 href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-                           </li>
-                        </ul>
-                        <div class="tab-content" id="tab-content-5">
-                           <div class="tab-pane fade show active" id="signin" 
-                              role="tabpanel" aria-labelledby="signin-tab">
-                              <form action="#">
-                                 <div id="sign-in"></div>
-                                 <div class="form-group">
-                                    <label for="singin-email">Username or 
-                                    email address *</label>
-                                    <input type="text" class="form-control" id="singin-email"
-                                       name="singin-email" required autocomplete="off">
-                                 </div>
-                                 <!-- End .form-group -->
-                                 <div class="form-group">
-                                    <label for="singin-password">Password *</label>
-                                    <input type="password" class="form-control" 
-                                       id="singin-password" name="singin-password"
-                                       required autocomplete="off">
-                                 </div>
-                                 <!-- End .form-group -->
-                                 <div class="form-footer">
-                                    <button type="button" id="login" class="btn btn-outline-primary-2">
-                                    <span>LOG IN</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                    </button>
-                                    <div class="custom-control custom-checkbox">
-                                       <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                       <label class="custom-control-label" for="signin-remember">Remember Me</label>
-                                    </div>
-                                    <!-- End .custom-checkbox -->
-                                    <a href="#" class="forgot-link">Forgot Your Password?</a>
-                                 </div>
-                                 <!-- End .form-footer -->
-                              </form>
-                              <div class="form-choice">
-                                 <p class="text-center">or sign in with</p>
-                                 <div class="row">
-                                    <div class="col-sm-6">
-                                       <a href="#" class="btn btn-login btn-g">
-                                       <i class="icon-google"></i>
-                                       Login With Google
-                                       </a>
-                                    </div>
-                                    <!-- End .col-6 -->
-                                    <div class="col-sm-6">
-                                       <a href="#" class="btn btn-login btn-f">
-                                       <i class="icon-facebook-f"></i>
-                                       Login With Facebook
-                                       </a>
-                                    </div>
-                                    <!-- End .col-6 -->
-                                 </div>
-                                 <!-- End .row -->
-                              </div>
-                              <!-- End .form-choice -->
-                           </div>
-                           <!-- .End .tab-pane -->
-                           <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                              <div id="register-in"></div>
-                              <form action="#">
-                                 <div id="register-in"></div>
-                                 <div class="form-group">
-                                    <label for="register-email">Your Name *</label>
-                                    <input type="text"  class="form-control" 
-                                       id="registername" name="register-email" required 
-                                       autocomplete="off">
-                                 </div>
-                                 <!-- End .form-group -->
-                                 <div class="form-group">
-                                    <label for="register-email">Your email address *</label>
-                                    <input type="email"  class="form-control" 
-                                       id="registeremail" name="register-email" required autocomplete="off">
-                                 </div>
-                                 <!-- End .form-group -->
-                                 <div class="form-group">
-                                    <label for="register-password">Password *</label>
-                                    <input type="password" class="form-control" 
-                                       id="registerpassword" name="register-password" required autocomplete="off">
-                                 </div>
-                                 <!-- End .form-group -->
-                                 <div class="form-footer">
-                                    <button type="button" class="btn btn-outline-primary-2"
-                                       id="register-btn"
-                                       >
-                                    <span>SIGN UP</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                    </button>
-                                    <div class="custom-control custom-checkbox">
-                                       <input type="checkbox" class="custom-control-input" 
-                                          id="register-policy" required>
-                                       <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
-                                    </div>
-                                    <!-- End .custom-checkbox -->
-                                 </div>
-                                 <!-- End .form-footer -->
-                              </form>
-                              <div class="form-choice">
-                                 <p class="text-center">or sign in with</p>
-                                 <div class="row">
-                                    <div class="col-sm-6">
-                                       <a href="#" class="btn btn-login btn-g">
-                                       <i class="icon-google"></i>
-                                       Login With Google
-                                       </a>
-                                    </div>
-                                    <!-- End .col-6 -->
-                                    <div class="col-sm-6">
-                                       <a href="#" class="btn btn-login  btn-f">
-                                       <i class="icon-facebook-f"></i>
-                                       Login With Facebook
-                                       </a>
-                                    </div>
-                                    <!-- End .col-6 -->
-                                 </div>
-                                 <!-- End .row -->
-                              </div>
-                              <!-- End .form-choice -->
-                           </div>
-                           <!-- .End .tab-pane -->
-                        </div>
-                        <!-- End .tab-content -->
-                     </div>
-                     <!-- End .form-tab -->
-                  </div>
-                  <!-- End .form-box -->
-               </div>
-               <!-- End .modal-body -->
-            </div>
-            <!-- End .modal-content -->
-         </div>
-         <!-- End .modal-dialog -->
-      </div>
-      <!-- End .modal -->
+      <?php
+	  
+	  
+	  require("login-model.php");//login model here 
+	  
+	  
+	  ?>
+	  
+	  
+	  <!-- End .modal -->
       <!--<div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
          <div class="row justify-content-center">
              <div class="col-10">
